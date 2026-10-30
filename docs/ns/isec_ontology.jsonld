@@ -1,0 +1,2174 @@
+[
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#vulnerabilityOfAsset",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Vulnerability"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "уязвимость ресурса"
+      },
+      {
+        "@language": "en",
+        "@value": "vulnerability of asset"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Asset"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Vulnerability",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Слабое место ресурса, которое может быть проэксплуатировано атакой. Конкретный экземпляр уязвимости (аналог записи CVE)."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "Уязвимость"
+      },
+      {
+        "@language": "en",
+        "@value": "Vulnerability"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "MDISOnt — Meriah et al., 2025"
+      },
+      {
+        "@value": "OntoSecAI — Ullah et al., 2025"
+      },
+      {
+        "@value": "UCO — Syed et al., 2016"
+      },
+      {
+        "@value": "SEPSES — Kiesling et al., 2019"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#hasEffectiveDate",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Standard"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "дата введения в действие"
+      },
+      {
+        "@language": "en",
+        "@value": "effective date"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#date"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#hasLikelihood",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Ожидаемые значения: низкая/средняя/высокая (или числовая шкала — определяется при заполнении графа)."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Risk"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "вероятность"
+      },
+      {
+        "@language": "en",
+        "@value": "likelihood"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#string"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Asset",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Защищаемый ресурс: информационный, программный, аппаратный или организационный объект, обладающий ценностью и потенциально уязвимый к угрозам."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "Ресурс"
+      },
+      {
+        "@language": "en",
+        "@value": "Asset"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#altLabel": [
+      {
+        "@language": "ru",
+        "@value": "актив"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "MDISOnt — Meriah et al., 2025"
+      },
+      {
+        "@value": "OntoSecAI — Ullah et al., 2025"
+      },
+      {
+        "@value": "UCO — Syed et al., 2016"
+      },
+      {
+        "@value": "SEPSES — Kiesling et al., 2019"
+      },
+      {
+        "@value": "Массель, Ворожцова, 2020 (онтологические модели объектов энергетики)"
+      },
+      {
+        "@value": "концептуальное ядро корпуса из 93 онтологий (Gacitua, Diéguez-Rebolledo, 2026)"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#KnowledgeBase",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Внешний каталог или база знаний, с которой связываются уязвимости, слабости и шаблоны атак онтологии (например, CVE, CWE, CAPEC, MITRE ATT&CK, БДУ ФСТЭК)."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "Внешняя база знаний"
+      },
+      {
+        "@language": "en",
+        "@value": "External Knowledge Base"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "UCO — Syed et al., 2016"
+      },
+      {
+        "@value": "SEPSES — Kiesling et al., 2019"
+      },
+      {
+        "@value": "требование совместимости с внешними базами знаний"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#CVE",
+    "@type": [
+      "https://andrei56-tech.github.io/isec-ontology/ns#KnowledgeBase"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "CVE"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@id": "https://cve.mitre.org/"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#designDecision",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Фиксирует, как была разрешена содержательная неоднозначность между источниками при построении онтологии, и почему."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "решение о разрешении неоднозначности"
+      },
+      {
+        "@language": "en",
+        "@value": "disambiguation decision"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#mitigates",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "«контрмера нейтрализует угрозу» — типовая связь концептуального ядра."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "нейтрализует"
+      },
+      {
+        "@language": "en",
+        "@value": "mitigates"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Threat"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#inverseOf": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#mitigatedBy"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "типовые связи концептуального ядра (Gacitua, Diéguez-Rebolledo, 2026)"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#remediates",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "устраняет"
+      },
+      {
+        "@language": "en",
+        "@value": "remediates"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Vulnerability"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#CriticalInfrastructureObject",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Ресурс, относящийся к критической информационной инфраструктуре; для таких объектов характерна многоуровневая декомпозиция (технический, процессный, организационный уровни)."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "Объект критической информационной инфраструктуры"
+      },
+      {
+        "@language": "en",
+        "@value": "Critical Information Infrastructure Object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Asset"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#altLabel": [
+      {
+        "@language": "ru",
+        "@value": "объект КИИ"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "Массель, Ворожцова, 2020 (онтологические модели объектов энергетики)"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#conductedBy",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Attack"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "проведена"
+      },
+      {
+        "@language": "en",
+        "@value": "conducted by"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#ThreatActor"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#inverseOf": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#conducts"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Мера, техническая или организационная, направленная на нейтрализацию угрозы, устранение уязвимости или защиту ресурса."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "Контрмера"
+      },
+      {
+        "@language": "en",
+        "@value": "Countermeasure"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#altLabel": [
+      {
+        "@language": "ru",
+        "@value": "мера защиты"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "MDISOnt — Meriah et al., 2025"
+      },
+      {
+        "@value": "OntoSecAI — Ullah et al., 2025"
+      },
+      {
+        "@value": "UCO — Syed et al., 2016"
+      },
+      {
+        "@value": "SEPSES — Kiesling et al., 2019"
+      },
+      {
+        "@value": "Массель, Ворожцова, 2020 (онтологические модели объектов энергетики)"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#NormativeRequirement",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Требование, зафиксированное в стандарте или нормативном документе, предписывающее применение конкретной контрмеры."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "Нормативное требование"
+      },
+      {
+        "@language": "en",
+        "@value": "Normative Requirement"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "MDISOnt — Meriah et al., 2025 (обогащение по ISO/IEC 27000)"
+      },
+      {
+        "@value": "NIST CSF 2.0 — NIST, 2024"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#mandatedBy",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "предписана"
+      },
+      {
+        "@language": "en",
+        "@value": "mandated by"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#NormativeRequirement"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#NIST_CSF_2_0",
+    "@type": [
+      "https://andrei56-tech.github.io/isec-ontology/ns#Standard"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "NIST Cybersecurity Framework 2.0"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@id": "https://doi.org/10.6028/NIST.CSWP.29"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#hasVersion": [
+      {
+        "@value": "2.0"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "NIST CSF 2.0 — NIST, 2024"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#ISO_IEC_27000",
+    "@type": [
+      "https://andrei56-tech.github.io/isec-ontology/ns#Standard"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "ISO/IEC 27000"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "ISO/IEC 27000:2018"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#partOf",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "http://www.w3.org/2002/07/owl#TransitiveProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Отношение часть-целое между ресурсами; по типологии тезауруса РуТез — второй тип отношений, обладающий транзитивностью при условии жёсткой связи части с целым."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Asset"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "часть"
+      },
+      {
+        "@language": "en",
+        "@value": "part of"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Asset"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "Лукашевич и др., 2018 (отношение «часть — целое»)"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#instantiatesPattern",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Attack"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "инстанциирует шаблон"
+      },
+      {
+        "@language": "en",
+        "@value": "instantiates pattern"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#AttackPattern"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Respond",
+    "@type": [
+      "https://andrei56-tech.github.io/isec-ontology/ns#CSFFunction"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Слабо охвачена существующими онтологиями: 13 работ из 93 (Gacitua, Diéguez-Rebolledo, 2026)."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Respond"
+      },
+      {
+        "@language": "ru",
+        "@value": "Реагирование"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#DigitalTwin",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Модель ресурса (как правило, объекта КИИ), на которой можно проводить анализ защищённости без воздействия на реальный производственный объект."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "Цифровой двойник"
+      },
+      {
+        "@language": "en",
+        "@value": "Digital Twin"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#designDecision": [
+      {
+        "@language": "ru",
+        "@value": "DigitalTwin введен как самостоятельный класс, связанный с Asset свойством modelsAsset, а не как подкласс Asset. Двойник не является защищаемым ресурсом, он служит его моделью; если сделать его подклассом Asset, в графе нельзя будет отличить результаты, полученные на модели, от результатов, подтвержденных на реальной системе. Источники, вводящие цифровой двойник, это отношение явно не формализуют."
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "Массель, Ворожцова, 2020 (цифровые двойники объектов энергетики)"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Standard",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Внешний нормативный источник, определяющий требования (например, NIST CSF, ISO/IEC 27000, требования по защите КИИ)."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "Стандарт / нормативный документ"
+      },
+      {
+        "@language": "en",
+        "@value": "Standard"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "NIST CSF 2.0 — NIST, 2024"
+      },
+      {
+        "@value": "ISO/IEC 27000:2018"
+      },
+      {
+        "@value": "БДУ ФСТЭК России"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#protectedBy",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Asset"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "защищён посредством"
+      },
+      {
+        "@language": "en",
+        "@value": "protected by"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#hasRiskScore",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Risk"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "интегральная оценка риска"
+      },
+      {
+        "@language": "en",
+        "@value": "risk score"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#decimal"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#arisesFromThreat",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Risk"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "возникает из угрозы"
+      },
+      {
+        "@language": "en",
+        "@value": "arises from threat"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Threat"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#AttackPattern",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Обобщённое, многократно используемое описание способа атаки (аналог записи CAPEC или техники MITRE ATT&CK), которое может быть инстанциировано в виде конкретной атаки."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "Шаблон атаки"
+      },
+      {
+        "@language": "en",
+        "@value": "Attack Pattern"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#altLabel": [
+      {
+        "@language": "ru",
+        "@value": "техника атаки"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "SEPSES — Kiesling et al., 2019"
+      },
+      {
+        "@value": "MITRE ATT&CK"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#exploits",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "«атака эксплуатирует уязвимость» — типовая связь концептуального ядра."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Attack"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "эксплуатирует"
+      },
+      {
+        "@language": "en",
+        "@value": "exploits"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Vulnerability"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "типовые связи концептуального ядра (Gacitua, Diéguez-Rebolledo, 2026)"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Indicator",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Наблюдаемый артефакт (сетевой, файловый и т.п.), свидетельствующий о конкретной атаке или активности злоумышленника."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "Индикатор компрометации"
+      },
+      {
+        "@language": "en",
+        "@value": "Indicator of Compromise"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "UCO — Syed et al., 2016 (интеграция со STIX)"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#CAPEC",
+    "@type": [
+      "https://andrei56-tech.github.io/isec-ontology/ns#KnowledgeBase"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "CAPEC"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@id": "https://capec.mitre.org/"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Recover",
+    "@type": [
+      "https://andrei56-tech.github.io/isec-ontology/ns#CSFFunction"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Наименее охваченная функция: 2 работы из 93 (Gacitua, Diéguez-Rebolledo, 2026)."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Recover"
+      },
+      {
+        "@language": "ru",
+        "@value": "Восстановление"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#BDU_FSTEC",
+    "@type": [
+      "https://andrei56-tech.github.io/isec-ontology/ns#KnowledgeBase"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "БДУ ФСТЭК России"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@id": "https://bdu.fstec.ru/"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "БДУ ФСТЭК России"
+      }
+    ]
+  },
+  {
+    "@id": "_:n9d36163d7b624d4b82aabb85894c8e3fb1",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AllDisjointClasses"
+    ],
+    "http://www.w3.org/2002/07/owl#members": [
+      {
+        "@list": [
+          {
+            "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Asset"
+          },
+          {
+            "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Threat"
+          },
+          {
+            "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Attack"
+          },
+          {
+            "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Vulnerability"
+          },
+          {
+            "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Weakness"
+          },
+          {
+            "@id": "https://andrei56-tech.github.io/isec-ontology/ns#AttackPattern"
+          },
+          {
+            "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"
+          },
+          {
+            "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Risk"
+          },
+          {
+            "@id": "https://andrei56-tech.github.io/isec-ontology/ns#ThreatActor"
+          },
+          {
+            "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Indicator"
+          },
+          {
+            "@id": "https://andrei56-tech.github.io/isec-ontology/ns#DigitalTwin"
+          },
+          {
+            "@id": "https://andrei56-tech.github.io/isec-ontology/ns#NormativeRequirement"
+          },
+          {
+            "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Standard"
+          },
+          {
+            "@id": "https://andrei56-tech.github.io/isec-ontology/ns#KnowledgeBase"
+          },
+          {
+            "@id": "https://andrei56-tech.github.io/isec-ontology/ns#CSFFunction"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#arisesFromVulnerability",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Risk"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "возникает из уязвимости"
+      },
+      {
+        "@language": "en",
+        "@value": "arises from vulnerability"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Vulnerability"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#targets",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Threat"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "нацелена на"
+      },
+      {
+        "@language": "en",
+        "@value": "targets"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Asset"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#inverseOf": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#threatenedBy"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#indicatesAttack",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Indicator"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "указывает на атаку"
+      },
+      {
+        "@language": "en",
+        "@value": "indicates attack"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Attack"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#conducts",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#ThreatActor"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "проводит"
+      },
+      {
+        "@language": "en",
+        "@value": "conducts"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Attack"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#classifiedAsWeakness",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Vulnerability"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "классифицирована как слабость"
+      },
+      {
+        "@language": "en",
+        "@value": "classified as weakness"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Weakness"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#ResponseAction",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Контрмера, относящаяся к пост-инцидентной фазе (реагирование и восстановление). Выделена отдельным подклассом намеренно: обзор [раздел 3.2, 5.4] показал, что функции Respond и Recover NIST CSF 2.0 наименее обеспечены онтологической поддержкой; явное выделение подкласса делает этот участок жизненного цикла адресуемым в графе знаний."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "Действие реагирования"
+      },
+      {
+        "@language": "en",
+        "@value": "Response Action"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "анализ покрытия функций NIST CSF 2.0 в корпусе (Gacitua, Diéguez-Rebolledo, 2026)"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#MITRE_ATTACK",
+    "@type": [
+      "https://andrei56-tech.github.io/isec-ontology/ns#KnowledgeBase"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "MITRE ATT&CK"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@id": "https://attack.mitre.org/"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "MITRE ATT&CK"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#hasCVSSScore",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Vulnerability"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "оценка CVSS"
+      },
+      {
+        "@language": "en",
+        "@value": "CVSS score"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#decimal"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "OntoSecAI — Ullah et al., 2025"
+      },
+      {
+        "@value": "SEPSES — Kiesling et al., 2019"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#CWE",
+    "@type": [
+      "https://andrei56-tech.github.io/isec-ontology/ns#KnowledgeBase"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "CWE"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@id": "https://cwe.mitre.org/"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Weakness",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Общая категория недостатка (аналог CWE), которой может быть классифицирована конкретная уязвимость. В отличие от Vulnerability — не привязана к конкретному ресурсу или экземпляру."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "Слабость"
+      },
+      {
+        "@language": "en",
+        "@value": "Weakness"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "SEPSES — Kiesling et al., 2019 (связывание CVE, CWE, CAPEC, CVSS)"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Govern",
+    "@type": [
+      "https://andrei56-tech.github.io/isec-ontology/ns#CSFFunction"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Введена в NIST CSF версии 2.0; в корпусе из 93 онтологий затрагивается в 26 работах, преимущественно через связь со стандартами управления."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Govern"
+      },
+      {
+        "@language": "ru",
+        "@value": "Управление"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#hasVersion",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Standard"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "версия"
+      },
+      {
+        "@language": "en",
+        "@value": "version"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#string"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#definedInStandard",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#NormativeRequirement"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "определено в стандарте"
+      },
+      {
+        "@language": "en",
+        "@value": "defined in standard"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Standard"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#realizedBy",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Threat"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "реализуется через"
+      },
+      {
+        "@language": "en",
+        "@value": "realized by"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Attack"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Threat",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Потенциальный источник нежелательного воздействия на ресурс. В отличие от Attack — абстрактная возможность, а не конкретное реализованное событие."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "Угроза"
+      },
+      {
+        "@language": "en",
+        "@value": "Threat"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#altLabel": [
+      {
+        "@language": "ru",
+        "@value": "опасность"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "MDISOnt — Meriah et al., 2025"
+      },
+      {
+        "@value": "OntoSecAI — Ullah et al., 2025"
+      },
+      {
+        "@value": "UCO — Syed et al., 2016"
+      },
+      {
+        "@value": "SEPSES — Kiesling et al., 2019"
+      },
+      {
+        "@value": "Лукашевич и др., 2018 (иерархия «опасность, угроза»)"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#indicatesActor",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Indicator"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "указывает на злоумышленника"
+      },
+      {
+        "@language": "en",
+        "@value": "indicates actor"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#ThreatActor"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Protect",
+    "@type": [
+      "https://andrei56-tech.github.io/isec-ontology/ns#CSFFunction"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Protect"
+      },
+      {
+        "@language": "ru",
+        "@value": "Защита"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Risk",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Оценка потенциального ущерба, возникающего из сочетания угрозы, уязвимости и их воздействия на конкретный ресурс."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "Риск"
+      },
+      {
+        "@language": "en",
+        "@value": "Risk"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#designDecision": [
+      {
+        "@language": "ru",
+        "@value": "Риск выделен в самостоятельный класс, а не задан атрибутом угрозы или уязвимости: одна и та же уязвимость создает разный риск для разных ресурсов. Три связи (arisesFromThreat, arisesFromVulnerability, concernsAsset) представляют эту трехместную зависимость и позволяют выполнить запрос «риски для ресурса X». В источниках явная оценка риска есть только в OntoSecAI."
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "OntoSecAI — Ullah et al., 2025 (оценка риска на основе CVSS)"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#CSFFunction",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Одна из шести функций рамочного документа NIST Cybersecurity Framework 2.0 (Govern, Identify, Protect, Detect, Respond, Recover), которую поддерживает контрмера."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "Функция NIST CSF 2.0"
+      },
+      {
+        "@language": "en",
+        "@value": "CSF Function"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "NIST CSF 2.0 — NIST, 2024; требование «полнота жизненного цикла»"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#hasImpactLevel",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Risk"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "уровень ущерба"
+      },
+      {
+        "@language": "en",
+        "@value": "impact level"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#string"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#hasCriticalityLevel",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Например: технический / процессный / организационный уровень декомпозиции — по моделям объектов энергетики (Массель, Ворожцова, 2020)."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Asset"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "уровень критичности"
+      },
+      {
+        "@language": "en",
+        "@value": "criticality level"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#string"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "Массель, Ворожцова, 2020 (многоуровневая декомпозиция объектов)"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#threatenedBy",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Asset"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "под угрозой со стороны"
+      },
+      {
+        "@language": "en",
+        "@value": "threatened by"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Threat"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Ontology"
+    ],
+    "http://purl.org/dc/terms/bibliographicCitation": [
+      {
+        "@language": "ru",
+        "@value": "Ципорин П.И. Онтологии информационной безопасности: состояние исследований и консолидированная модель для контура GraphRAG (в печати)."
+      }
+    ],
+    "http://purl.org/dc/terms/created": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2026-08-27"
+      }
+    ],
+    "http://purl.org/dc/terms/creator": [
+      {
+        "@language": "ru",
+        "@value": "Ципорин П.И."
+      },
+      {
+        "@language": "en",
+        "@value": "Tsiporin P.I."
+      }
+    ],
+    "http://purl.org/dc/terms/description": [
+      {
+        "@language": "ru",
+        "@value": "Онтология предметной области информационной безопасности, построенная обобщением онтологических разработок и нормативных рамок, рассмотренных в обзоре. Предназначена для использования в качестве схемы графа знаний о защищаемой системе в контуре GraphRAG для анализа защищенности."
+      },
+      {
+        "@language": "en",
+        "@value": "A domain ontology of information security consolidated from published security ontologies and frameworks. Intended as the schema of a knowledge graph of a protected system in a GraphRAG pipeline for security posture analysis."
+      }
+    ],
+    "http://purl.org/dc/terms/license": [
+      {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
+    ],
+    "http://purl.org/dc/terms/modified": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2026-10-30"
+      }
+    ],
+    "http://purl.org/dc/terms/source": [
+      {
+        "@id": "https://doi.org/10.3390/app16126185"
+      },
+      {
+        "@id": "https://doi.org/10.1007/s10115-024-02308-y"
+      },
+      {
+        "@id": "https://doi.org/10.1371/journal.pone.0337806"
+      },
+      {
+        "@id": "https://doi.org/10.1007/978-3-030-30796-7_13"
+      },
+      {
+        "@id": "https://doi.org/10.18287/2223-9537-2020-10-3-327-337"
+      },
+      {
+        "@id": "https://doi.org/10.18287/2223-9537-2018-8-1-74-95"
+      },
+      {
+        "@id": "https://doi.org/10.6028/NIST.CSWP.29"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@language": "ru",
+        "@value": "Консолидированная онтология информационной безопасности"
+      },
+      {
+        "@language": "en",
+        "@value": "Consolidated Information Security Ontology"
+      }
+    ],
+    "http://purl.org/vocab/vann/preferredNamespacePrefix": [
+      {
+        "@value": "isec"
+      }
+    ],
+    "http://purl.org/vocab/vann/preferredNamespaceUri": [
+      {
+        "@value": "https://andrei56-tech.github.io/isec-ontology/ns#"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@id": "https://github.com/Andrei56-tech/isec-ontology"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#versionIRI": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/1.0.0/ns"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#versionInfo": [
+      {
+        "@value": "1.0.0"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Identify",
+    "@type": [
+      "https://andrei56-tech.github.io/isec-ontology/ns#CSFFunction"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Identify"
+      },
+      {
+        "@language": "ru",
+        "@value": "Идентификация"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#hasVulnerability",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "«уязвимость присуща ресурсу» — типовая связь концептуального ядра."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Asset"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "имеет уязвимость"
+      },
+      {
+        "@language": "en",
+        "@value": "has vulnerability"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Vulnerability"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#inverseOf": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#vulnerabilityOfAsset"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "типовые связи концептуального ядра (Gacitua, Diéguez-Rebolledo, 2026)"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#supportsFunction",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Связывает контрмеру с функцией NIST CSF 2.0, которую она обеспечивает; используется для запросов покрытия жизненного цикла."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "поддерживает функцию"
+      },
+      {
+        "@language": "en",
+        "@value": "supports function"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#CSFFunction"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "требование «полнота жизненного цикла»"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#mandates",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "«нормативное требование предписывает контрмеру» — типовая связь концептуального ядра."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#NormativeRequirement"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "предписывает"
+      },
+      {
+        "@language": "en",
+        "@value": "mandates"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#inverseOf": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#mandatedBy"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "типовые связи концептуального ядра (Gacitua, Diéguez-Rebolledo, 2026)"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Attack",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Конкретное действие или событие, реализующее угрозу через эксплуатацию одной или нескольких уязвимостей ресурса."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "Атака"
+      },
+      {
+        "@language": "en",
+        "@value": "Attack"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#designDecision": [
+      {
+        "@language": "ru",
+        "@value": "Threat и Attack разделены на два класса, связанных свойством isec:realizes (Attack realizes Threat), а не объединены в один класс и не связаны отношением subClassOf. Источники расходятся: MDISOnt/UCO трактуют их как разные сущности, OntoSecAI по сути сливает угрозу и атаку в единую оценку риска. Разделение с явной связью 'реализует' сохраняет различимость абстрактной возможности (Threat) и конкретного события (Attack)."
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "MDISOnt — Meriah et al., 2025"
+      },
+      {
+        "@value": "UCO — Syed et al., 2016"
+      },
+      {
+        "@value": "SEPSES — Kiesling et al., 2019"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#hasExternalId",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Идентификатор во внешней базе знаний (например, значение вида CVE-2024-XXXXX, CWE-XXX, CAPEC-XXX, T1059 для ATT&CK). Домен — объединение Vulnerability, Weakness, AttackPattern."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "внешний идентификатор"
+      },
+      {
+        "@language": "en",
+        "@value": "external identifier"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#string"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#concernsAsset",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Risk"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "относится к ресурсу"
+      },
+      {
+        "@language": "en",
+        "@value": "concerns asset"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Asset"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#protects",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "защищает"
+      },
+      {
+        "@language": "en",
+        "@value": "protects"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Asset"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#inverseOf": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#protectedBy"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#referencesKnowledgeBase",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Домен — объединение Vulnerability, Weakness и AttackPattern (union-домен не типизирован явно средствами RDFS; ограничение накладывается на уровне данных)."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "ссылается на базу знаний"
+      },
+      {
+        "@language": "en",
+        "@value": "references knowledge base"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#KnowledgeBase"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Detect",
+    "@type": [
+      "https://andrei56-tech.github.io/isec-ontology/ns#CSFFunction"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Detect"
+      },
+      {
+        "@language": "ru",
+        "@value": "Обнаружение"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#ThreatActor",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Действующее лицо или организация, выступающее источником атаки."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "Злоумышленник"
+      },
+      {
+        "@language": "en",
+        "@value": "Threat Actor"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "Массель, Ворожцова, 2020 (онтологические модели объектов энергетики)"
+      },
+      {
+        "@value": "UCO — Syed et al., 2016 (интеграция со STIX)"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#mitigatedBy",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Threat"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "нейтрализуется"
+      },
+      {
+        "@language": "en",
+        "@value": "mitigated by"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#dependsOn",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "http://www.w3.org/2002/07/owl#TransitiveProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Транзитивная зависимость между ресурсами; используется для распространения риска по цепочке зависимостей — типовая связь концептуального ядра."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Asset"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "зависит от"
+      },
+      {
+        "@language": "en",
+        "@value": "depends on"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Asset"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "задача распространения риска по зависимостям ресурсов"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#modelsAsset",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Связывает цифровой двойник с ресурсом, который он представляет; двойник не тождествен ресурсу — см. isec:designDecision класса isec:DigitalTwin."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#DigitalTwin"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "моделирует"
+      },
+      {
+        "@language": "en",
+        "@value": "models"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Asset"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom": [
+      {
+        "@value": "Массель, Ворожцова, 2020 (цифровые двойники)"
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#realizes",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Attack"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "реализует"
+      },
+      {
+        "@language": "en",
+        "@value": "realizes"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#Threat"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#inverseOf": [
+      {
+        "@id": "https://andrei56-tech.github.io/isec-ontology/ns#realizedBy"
+      }
+    ],
+    "https://andrei56-tech.github.io/isec-ontology/ns#designDecision": [
+      {
+        "@value": "Введено для явного разведения Threat и Attack — см. isec:designDecision класса isec:Attack."
+      }
+    ]
+  },
+  {
+    "@id": "https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "ru",
+        "@value": "Указывает источник(и), из обобщения которых введена данная конструкция (краткая библиографическая метка; полные выходные данные — в README и dcterms:source онтологии)."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "ru",
+        "@value": "источник обобщения"
+      },
+      {
+        "@language": "en",
+        "@value": "generalized from"
+      }
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+# Листинг 2. Функции NIST CSF 2.0, не обеспеченные ни одной контрмерой,
+# внедренной на ресурсах защищаемой системы (связь protects).
+PREFIX isec: <https://andrei56-tech.github.io/isec-ontology/ns#>
+SELECT ?function WHERE {
+  ?function a isec:CSFFunction .
+  FILTER NOT EXISTS {
+    ?countermeasure isec:supportsFunction ?function ;
+                    isec:protects         ?asset .
+  }
+}

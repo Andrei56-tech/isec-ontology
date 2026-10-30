@@ -1,0 +1,9 @@
+# Риски для заданного ресурса с указанием угрозы, уязвимости и оценки.
+PREFIX isec: <https://andrei56-tech.github.io/isec-ontology/ns#>
+PREFIX ex:   <https://andrei56-tech.github.io/isec-ontology/examples/substation#>
+SELECT ?risk ?threat ?vulnerability ?score WHERE {
+  ?risk isec:concernsAsset            ex:HistorianServer ;
+        isec:arisesFromThreat         ?threat ;
+        isec:arisesFromVulnerability  ?vulnerability .
+  OPTIONAL { ?risk isec:hasRiskScore ?score . }
+}

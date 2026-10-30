@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "Если вы используете эту онтологию, пожалуйста, цитируйте ее так, как указано ниже."
+title: "ISEC: консолидированная онтология информационной безопасности (Consolidated Information Security Ontology)"
+type: dataset
+version: 1.0.0
+date-released: 2026-10-30
+license: CC-BY-4.0
+repository-code: "https://github.com/Andrei56-tech/isec-ontology"
+url: "https://andrei56-tech.github.io/isec-ontology/ns/"
+authors:
+  - family-names: "Ципорин"
+    given-names: "П. И."
+keywords:
+  - ontology
+  - information security
+  - knowledge graph
+  - GraphRAG
+  - OWL

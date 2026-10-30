@@ -1,0 +1,110 @@
+@prefix isec:    <https://andrei56-tech.github.io/isec-ontology/ns#> .
+@prefix ex:      <https://andrei56-tech.github.io/isec-ontology/examples/substation#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+#################################################################
+#  Демонстрационный набор данных (иллюстративный)
+#  Условная защищаемая система: АСУ ТП подстанции.
+#  Состав, связи и оценки вымышлены и служат только для проверки
+#  схемы и запросов. Реальны лишь идентификаторы внешних баз
+#  знаний: CVE-2021-44228, CWE-502, техника ATT&CK T1190.
+#################################################################
+
+# --- Ресурсы и зависимости ---------------------------------------
+ex:DomainController a isec:Asset ;
+    rdfs:label "Контроллер домена"@ru ;
+    isec:hasCriticalityLevel "high" .
+
+ex:HistorianServer a isec:Asset ;
+    rdfs:label "Сервер архива технологических данных"@ru ;
+    isec:hasCriticalityLevel "medium" ;
+    isec:hasVulnerability ex:Vuln_Log4Shell .
+
+ex:ScadaServer a isec:CriticalInfrastructureObject ;
+    rdfs:label "Сервер SCADA"@ru ;
+    isec:hasCriticalityLevel "critical" ;
+    isec:dependsOn ex:DomainController , ex:HistorianServer .
+
+ex:OperatorHMI a isec:Asset ;
+    rdfs:label "АРМ оператора (HMI)"@ru ;
+    isec:hasCriticalityLevel "high" ;
+    isec:dependsOn ex:ScadaServer ;
+    isec:partOf ex:ControlRoom .
+
+ex:ControlRoom a isec:Asset ;
+    rdfs:label "Диспетчерский пункт"@ru .
+
+ex:SubstationTwin a isec:DigitalTwin ;
+    rdfs:label "Цифровой двойник АСУ ТП подстанции"@ru ;
+    isec:modelsAsset ex:ScadaServer , ex:HistorianServer , ex:OperatorHMI .
+
+# --- Уязвимости и внешние базы знаний ----------------------------
+ex:Vuln_Log4Shell a isec:Vulnerability ;
+    rdfs:label "Уязвимость Log4Shell в библиотеке Apache Log4j"@ru ;
+    isec:hasExternalId "CVE-2021-44228" ;
+    isec:hasCVSSScore "10.0"^^xsd:decimal ;
+    isec:classifiedAsWeakness ex:CWE_502 ;
+    isec:referencesKnowledgeBase isec:CVE .
+
+ex:CWE_502 a isec:Weakness ;
+    rdfs:label "Десериализация недоверенных данных"@ru ;
+    isec:hasExternalId "CWE-502" ;
+    isec:referencesKnowledgeBase isec:CWE .
+
+ex:T1190 a isec:AttackPattern ;
+    rdfs:label "Exploit Public-Facing Application"@en ;
+    isec:hasExternalId "T1190" ;
+    isec:referencesKnowledgeBase isec:MITRE_ATTACK .
+
+# --- Угрозы, атаки, злоумышленник -------------------------------
+ex:Threat_RCE a isec:Threat ;
+    rdfs:label "Удаленное выполнение кода на серверах АСУ ТП"@ru ;
+    isec:targets ex:HistorianServer , ex:ScadaServer .
+
+ex:Actor_X a isec:ThreatActor ;
+    rdfs:label "Внешний нарушитель (условный)"@ru .
+
+ex:Attack_1 a isec:Attack ;
+    rdfs:label "Эксплуатация Log4Shell на сервере архива"@ru ;
+    isec:realizes ex:Threat_RCE ;
+    isec:exploits ex:Vuln_Log4Shell ;
+    isec:instantiatesPattern ex:T1190 ;
+    isec:conductedBy ex:Actor_X .
+
+ex:IoC_1 a isec:Indicator ;
+    rdfs:label "Строка ${jndi:ldap://…} в журнале веб-сервиса"@ru ;
+    isec:indicatesAttack ex:Attack_1 .
+
+# --- Риск ----------------------------------------------------------
+ex:Risk_1 a isec:Risk ;
+    rdfs:label "Риск компрометации сервера архива через Log4Shell"@ru ;
+    isec:arisesFromThreat ex:Threat_RCE ;
+    isec:arisesFromVulnerability ex:Vuln_Log4Shell ;
+    isec:concernsAsset ex:HistorianServer ;
+    isec:hasLikelihood "high" ;
+    isec:hasImpactLevel "high" ;
+    isec:hasRiskScore "9.0"^^xsd:decimal .
+
+# --- Контрмеры и нормативные требования ---------------------------
+ex:CM_Inventory a isec:Countermeasure ;
+    rdfs:label "Инвентаризация программного обеспечения"@ru ;
+    isec:supportsFunction isec:Identify ;
+    isec:protects ex:HistorianServer , ex:ScadaServer .
+
+ex:CM_Patch a isec:Countermeasure ;
+    rdfs:label "Обновление Log4j до исправленной версии"@ru ;
+    isec:supportsFunction isec:Protect ;
+    isec:remediates ex:Vuln_Log4Shell ;
+    isec:mitigates ex:Threat_RCE ;
+    isec:protects ex:HistorianServer .
+
+ex:CM_IDS a isec:Countermeasure ;
+    rdfs:label "Сигнатуры СОВ для запросов JNDI"@ru ;
+    isec:supportsFunction isec:Detect ;
+    isec:protects ex:HistorianServer .
+
+ex:Req_1 a isec:NormativeRequirement ;
+    rdfs:label "Требование своевременного устранения известных уязвимостей"@ru ;
+    isec:mandates ex:CM_Patch ;
+    isec:definedInStandard isec:ISO_IEC_27000 .

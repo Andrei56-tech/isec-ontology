@@ -1,0 +1,429 @@
+@prefix isec:    <https://andrei56-tech.github.io/isec-ontology/ns#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+
+#################################################################
+#  КОНСОЛИДИРОВАННАЯ ОНТОЛОГИЯ ИНФОРМАЦИОННОЙ БЕЗОПАСНОСТИ (ISEC)
+#  Версия 1.0.0
+#
+#  Схема графа знаний для анализа защищенности в контуре GraphRAG.
+#  Построена обобщением онтологий MDISOnt, OntoSecAI, UCO, SEPSES,
+#  онтологических моделей цифровых двойников, тезаурусных ресурсов
+#  и NIST Cybersecurity Framework 2.0.
+#
+#  Формат: RDF 1.1 Turtle, словарь OWL 2, аксиоматика в пределах
+#  профиля OWL 2 RL.
+#  Аннотация isec:sourcedFrom указывает источник обобщения каждой
+#  конструкции, isec:designDecision — обоснование решений там,
+#  где источники расходятся.
+#
+#  Лицензия: CC BY 4.0
+#################################################################
+
+<https://andrei56-tech.github.io/isec-ontology/ns>
+    a owl:Ontology ;
+    owl:versionIRI <https://andrei56-tech.github.io/isec-ontology/1.0.0/ns> ;
+    owl:versionInfo "1.0.0" ;
+    dcterms:title "Консолидированная онтология информационной безопасности"@ru ,
+                  "Consolidated Information Security Ontology"@en ;
+    dcterms:description "Онтология предметной области информационной безопасности, построенная обобщением онтологических разработок и нормативных рамок, рассмотренных в обзоре. Предназначена для использования в качестве схемы графа знаний о защищаемой системе в контуре GraphRAG для анализа защищенности."@ru ,
+                        "A domain ontology of information security consolidated from published security ontologies and frameworks. Intended as the schema of a knowledge graph of a protected system in a GraphRAG pipeline for security posture analysis."@en ;
+    dcterms:creator "Ципорин П.И."@ru , "Tsiporin P.I."@en ;
+    dcterms:created "2026-08-27"^^xsd:date ;
+    dcterms:modified "2026-10-30"^^xsd:date ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:bibliographicCitation "Ципорин П.И. Онтологии информационной безопасности: состояние исследований и консолидированная модель для контура GraphRAG (в печати)."@ru ;
+    dcterms:source <https://doi.org/10.3390/app16126185> ,
+                   <https://doi.org/10.1007/s10115-024-02308-y> ,
+                   <https://doi.org/10.1371/journal.pone.0337806> ,
+                   <https://doi.org/10.1007/978-3-030-30796-7_13> ,
+                   <https://doi.org/10.18287/2223-9537-2020-10-3-327-337> ,
+                   <https://doi.org/10.18287/2223-9537-2018-8-1-74-95> ,
+                   <https://doi.org/10.6028/NIST.CSWP.29> ;
+    vann:preferredNamespacePrefix "isec" ;
+    vann:preferredNamespaceUri "https://andrei56-tech.github.io/isec-ontology/ns#" ;
+    rdfs:seeAlso <https://github.com/Andrei56-tech/isec-ontology> .
+
+#################################################################
+#  Аннотационные свойства
+#################################################################
+
+isec:sourcedFrom a owl:AnnotationProperty ;
+    rdfs:label "источник обобщения"@ru , "generalized from"@en ;
+    rdfs:comment "Указывает источник(и), из обобщения которых введена данная конструкция (краткая библиографическая метка; полные выходные данные — в README и dcterms:source онтологии)."@ru .
+
+isec:designDecision a owl:AnnotationProperty ;
+    rdfs:label "решение о разрешении неоднозначности"@ru , "disambiguation decision"@en ;
+    rdfs:comment "Фиксирует, как была разрешена содержательная неоднозначность между источниками при построении онтологии, и почему."@ru .
+
+#################################################################
+#  1. КЛАССЫ — концептуальное ядро (5 сущностей)
+#################################################################
+
+isec:Asset a owl:Class ;
+    rdfs:label "Ресурс"@ru , "Asset"@en ;
+    skos:altLabel "актив"@ru ;
+    rdfs:comment "Защищаемый ресурс: информационный, программный, аппаратный или организационный объект, обладающий ценностью и потенциально уязвимый к угрозам."@ru ;
+    isec:sourcedFrom "MDISOnt — Meriah et al., 2025", "OntoSecAI — Ullah et al., 2025", "UCO — Syed et al., 2016", "SEPSES — Kiesling et al., 2019", "Массель, Ворожцова, 2020 (онтологические модели объектов энергетики)", "концептуальное ядро корпуса из 93 онтологий (Gacitua, Diéguez-Rebolledo, 2026)" .
+
+isec:Threat a owl:Class ;
+    rdfs:label "Угроза"@ru , "Threat"@en ;
+    skos:altLabel "опасность"@ru ;
+    rdfs:comment "Потенциальный источник нежелательного воздействия на ресурс. В отличие от Attack — абстрактная возможность, а не конкретное реализованное событие."@ru ;
+    isec:sourcedFrom "MDISOnt — Meriah et al., 2025", "OntoSecAI — Ullah et al., 2025", "UCO — Syed et al., 2016", "SEPSES — Kiesling et al., 2019", "Лукашевич и др., 2018 (иерархия «опасность, угроза»)" .
+
+isec:Attack a owl:Class ;
+    rdfs:label "Атака"@ru , "Attack"@en ;
+    rdfs:comment "Конкретное действие или событие, реализующее угрозу через эксплуатацию одной или нескольких уязвимостей ресурса."@ru ;
+    isec:sourcedFrom "MDISOnt — Meriah et al., 2025", "UCO — Syed et al., 2016", "SEPSES — Kiesling et al., 2019" ;
+    isec:designDecision "Threat и Attack разделены на два класса, связанных свойством isec:realizes (Attack realizes Threat), а не объединены в один класс и не связаны отношением subClassOf. Источники расходятся: MDISOnt/UCO трактуют их как разные сущности, OntoSecAI по сути сливает угрозу и атаку в единую оценку риска. Разделение с явной связью 'реализует' сохраняет различимость абстрактной возможности (Threat) и конкретного события (Attack)."@ru .
+
+isec:Vulnerability a owl:Class ;
+    rdfs:label "Уязвимость"@ru , "Vulnerability"@en ;
+    rdfs:comment "Слабое место ресурса, которое может быть проэксплуатировано атакой. Конкретный экземпляр уязвимости (аналог записи CVE)."@ru ;
+    isec:sourcedFrom "MDISOnt — Meriah et al., 2025", "OntoSecAI — Ullah et al., 2025", "UCO — Syed et al., 2016", "SEPSES — Kiesling et al., 2019" .
+
+isec:Countermeasure a owl:Class ;
+    rdfs:label "Контрмера"@ru , "Countermeasure"@en ;
+    skos:altLabel "мера защиты"@ru ;
+    rdfs:comment "Мера, техническая или организационная, направленная на нейтрализацию угрозы, устранение уязвимости или защиту ресурса."@ru ;
+    isec:sourcedFrom "MDISOnt — Meriah et al., 2025", "OntoSecAI — Ullah et al., 2025", "UCO — Syed et al., 2016", "SEPSES — Kiesling et al., 2019", "Массель, Ворожцова, 2020 (онтологические модели объектов энергетики)" .
+
+#################################################################
+#  2. КЛАССЫ — расширение ядра по отдельным источникам
+#################################################################
+
+isec:CriticalInfrastructureObject a owl:Class ;
+    rdfs:subClassOf isec:Asset ;
+    rdfs:label "Объект критической информационной инфраструктуры"@ru , "Critical Information Infrastructure Object"@en ;
+    skos:altLabel "объект КИИ"@ru ;
+    rdfs:comment "Ресурс, относящийся к критической информационной инфраструктуре; для таких объектов характерна многоуровневая декомпозиция (технический, процессный, организационный уровни)."@ru ;
+    isec:sourcedFrom "Массель, Ворожцова, 2020 (онтологические модели объектов энергетики)" .
+
+isec:ResponseAction a owl:Class ;
+    rdfs:subClassOf isec:Countermeasure ;
+    rdfs:label "Действие реагирования"@ru , "Response Action"@en ;
+    rdfs:comment "Контрмера, относящаяся к пост-инцидентной фазе (реагирование и восстановление). Выделена отдельным подклассом намеренно: обзор [раздел 3.2, 5.4] показал, что функции Respond и Recover NIST CSF 2.0 наименее обеспечены онтологической поддержкой; явное выделение подкласса делает этот участок жизненного цикла адресуемым в графе знаний."@ru ;
+    isec:sourcedFrom "анализ покрытия функций NIST CSF 2.0 в корпусе (Gacitua, Diéguez-Rebolledo, 2026)" .
+
+isec:Weakness a owl:Class ;
+    rdfs:label "Слабость"@ru , "Weakness"@en ;
+    rdfs:comment "Общая категория недостатка (аналог CWE), которой может быть классифицирована конкретная уязвимость. В отличие от Vulnerability — не привязана к конкретному ресурсу или экземпляру."@ru ;
+    isec:sourcedFrom "SEPSES — Kiesling et al., 2019 (связывание CVE, CWE, CAPEC, CVSS)" .
+
+isec:AttackPattern a owl:Class ;
+    rdfs:label "Шаблон атаки"@ru , "Attack Pattern"@en ;
+    skos:altLabel "техника атаки"@ru ;
+    rdfs:comment "Обобщённое, многократно используемое описание способа атаки (аналог записи CAPEC или техники MITRE ATT&CK), которое может быть инстанциировано в виде конкретной атаки."@ru ;
+    isec:sourcedFrom "SEPSES — Kiesling et al., 2019", "MITRE ATT&CK" .
+
+isec:ThreatActor a owl:Class ;
+    rdfs:label "Злоумышленник"@ru , "Threat Actor"@en ;
+    rdfs:comment "Действующее лицо или организация, выступающее источником атаки."@ru ;
+    isec:sourcedFrom "Массель, Ворожцова, 2020 (онтологические модели объектов энергетики)", "UCO — Syed et al., 2016 (интеграция со STIX)" .
+
+isec:Indicator a owl:Class ;
+    rdfs:label "Индикатор компрометации"@ru , "Indicator of Compromise"@en ;
+    rdfs:comment "Наблюдаемый артефакт (сетевой, файловый и т.п.), свидетельствующий о конкретной атаке или активности злоумышленника."@ru ;
+    isec:sourcedFrom "UCO — Syed et al., 2016 (интеграция со STIX)" .
+
+isec:Risk a owl:Class ;
+    rdfs:label "Риск"@ru , "Risk"@en ;
+    rdfs:comment "Оценка потенциального ущерба, возникающего из сочетания угрозы, уязвимости и их воздействия на конкретный ресурс."@ru ;
+    isec:sourcedFrom "OntoSecAI — Ullah et al., 2025 (оценка риска на основе CVSS)" ;
+    isec:designDecision "Риск выделен в самостоятельный класс, а не задан атрибутом угрозы или уязвимости: одна и та же уязвимость создает разный риск для разных ресурсов. Три связи (arisesFromThreat, arisesFromVulnerability, concernsAsset) представляют эту трехместную зависимость и позволяют выполнить запрос «риски для ресурса X». В источниках явная оценка риска есть только в OntoSecAI."@ru .
+
+isec:DigitalTwin a owl:Class ;
+    rdfs:label "Цифровой двойник"@ru , "Digital Twin"@en ;
+    rdfs:comment "Модель ресурса (как правило, объекта КИИ), на которой можно проводить анализ защищённости без воздействия на реальный производственный объект."@ru ;
+    isec:sourcedFrom "Массель, Ворожцова, 2020 (цифровые двойники объектов энергетики)" ;
+    isec:designDecision "DigitalTwin введен как самостоятельный класс, связанный с Asset свойством modelsAsset, а не как подкласс Asset. Двойник не является защищаемым ресурсом, он служит его моделью; если сделать его подклассом Asset, в графе нельзя будет отличить результаты, полученные на модели, от результатов, подтвержденных на реальной системе. Источники, вводящие цифровой двойник, это отношение явно не формализуют."@ru .
+
+isec:NormativeRequirement a owl:Class ;
+    rdfs:label "Нормативное требование"@ru , "Normative Requirement"@en ;
+    rdfs:comment "Требование, зафиксированное в стандарте или нормативном документе, предписывающее применение конкретной контрмеры."@ru ;
+    isec:sourcedFrom "MDISOnt — Meriah et al., 2025 (обогащение по ISO/IEC 27000)", "NIST CSF 2.0 — NIST, 2024" .
+
+isec:Standard a owl:Class ;
+    rdfs:label "Стандарт / нормативный документ"@ru , "Standard"@en ;
+    rdfs:comment "Внешний нормативный источник, определяющий требования (например, NIST CSF, ISO/IEC 27000, требования по защите КИИ)."@ru ;
+    isec:sourcedFrom "NIST CSF 2.0 — NIST, 2024", "ISO/IEC 27000:2018", "БДУ ФСТЭК России" .
+
+isec:KnowledgeBase a owl:Class ;
+    rdfs:label "Внешняя база знаний"@ru , "External Knowledge Base"@en ;
+    rdfs:comment "Внешний каталог или база знаний, с которой связываются уязвимости, слабости и шаблоны атак онтологии (например, CVE, CWE, CAPEC, MITRE ATT&CK, БДУ ФСТЭК)."@ru ;
+    isec:sourcedFrom "UCO — Syed et al., 2016", "SEPSES — Kiesling et al., 2019", "требование совместимости с внешними базами знаний" .
+
+isec:CSFFunction a owl:Class ;
+    rdfs:label "Функция NIST CSF 2.0"@ru , "CSF Function"@en ;
+    rdfs:comment "Одна из шести функций рамочного документа NIST Cybersecurity Framework 2.0 (Govern, Identify, Protect, Detect, Respond, Recover), которую поддерживает контрмера."@ru ;
+    isec:sourcedFrom "NIST CSF 2.0 — NIST, 2024; требование «полнота жизненного цикла»" .
+
+#################################################################
+#  3. Попарная непересекаемость классов верхнего уровня
+#################################################################
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( isec:Asset isec:Threat isec:Attack isec:Vulnerability
+                  isec:Weakness isec:AttackPattern isec:Countermeasure
+                  isec:Risk isec:ThreatActor isec:Indicator isec:DigitalTwin
+                  isec:NormativeRequirement isec:Standard isec:KnowledgeBase
+                  isec:CSFFunction ) .
+
+#################################################################
+#  4. ОБЪЕКТНЫЕ СВОЙСТВА
+#################################################################
+
+isec:hasVulnerability a owl:ObjectProperty ;
+    rdfs:domain isec:Asset ; rdfs:range isec:Vulnerability ;
+    owl:inverseOf isec:vulnerabilityOfAsset ;
+    rdfs:label "имеет уязвимость"@ru , "has vulnerability"@en ;
+    rdfs:comment "«уязвимость присуща ресурсу» — типовая связь концептуального ядра."@ru ;
+    isec:sourcedFrom "типовые связи концептуального ядра (Gacitua, Diéguez-Rebolledo, 2026)" .
+
+isec:vulnerabilityOfAsset a owl:ObjectProperty ;
+    rdfs:domain isec:Vulnerability ; rdfs:range isec:Asset ;
+    rdfs:label "уязвимость ресурса"@ru , "vulnerability of asset"@en .
+
+isec:exploits a owl:ObjectProperty ;
+    rdfs:domain isec:Attack ; rdfs:range isec:Vulnerability ;
+    rdfs:label "эксплуатирует"@ru , "exploits"@en ;
+    rdfs:comment "«атака эксплуатирует уязвимость» — типовая связь концептуального ядра."@ru ;
+    isec:sourcedFrom "типовые связи концептуального ядра (Gacitua, Diéguez-Rebolledo, 2026)" .
+
+isec:realizes a owl:ObjectProperty ;
+    rdfs:domain isec:Attack ; rdfs:range isec:Threat ;
+    owl:inverseOf isec:realizedBy ;
+    rdfs:label "реализует"@ru , "realizes"@en ;
+    isec:designDecision "Введено для явного разведения Threat и Attack — см. isec:designDecision класса isec:Attack." .
+
+isec:realizedBy a owl:ObjectProperty ;
+    rdfs:domain isec:Threat ; rdfs:range isec:Attack ;
+    rdfs:label "реализуется через"@ru , "realized by"@en .
+
+isec:targets a owl:ObjectProperty ;
+    rdfs:domain isec:Threat ; rdfs:range isec:Asset ;
+    owl:inverseOf isec:threatenedBy ;
+    rdfs:label "нацелена на"@ru , "targets"@en .
+
+isec:threatenedBy a owl:ObjectProperty ;
+    rdfs:domain isec:Asset ; rdfs:range isec:Threat ;
+    rdfs:label "под угрозой со стороны"@ru , "threatened by"@en .
+
+isec:mitigates a owl:ObjectProperty ;
+    rdfs:domain isec:Countermeasure ; rdfs:range isec:Threat ;
+    owl:inverseOf isec:mitigatedBy ;
+    rdfs:label "нейтрализует"@ru , "mitigates"@en ;
+    rdfs:comment "«контрмера нейтрализует угрозу» — типовая связь концептуального ядра."@ru ;
+    isec:sourcedFrom "типовые связи концептуального ядра (Gacitua, Diéguez-Rebolledo, 2026)" .
+
+isec:mitigatedBy a owl:ObjectProperty ;
+    rdfs:domain isec:Threat ; rdfs:range isec:Countermeasure ;
+    rdfs:label "нейтрализуется"@ru , "mitigated by"@en .
+
+isec:remediates a owl:ObjectProperty ;
+    rdfs:domain isec:Countermeasure ; rdfs:range isec:Vulnerability ;
+    rdfs:label "устраняет"@ru , "remediates"@en .
+
+isec:protects a owl:ObjectProperty ;
+    rdfs:domain isec:Countermeasure ; rdfs:range isec:Asset ;
+    owl:inverseOf isec:protectedBy ;
+    rdfs:label "защищает"@ru , "protects"@en .
+
+isec:protectedBy a owl:ObjectProperty ;
+    rdfs:domain isec:Asset ; rdfs:range isec:Countermeasure ;
+    rdfs:label "защищён посредством"@ru , "protected by"@en .
+
+isec:mandates a owl:ObjectProperty ;
+    rdfs:domain isec:NormativeRequirement ; rdfs:range isec:Countermeasure ;
+    owl:inverseOf isec:mandatedBy ;
+    rdfs:label "предписывает"@ru , "mandates"@en ;
+    rdfs:comment "«нормативное требование предписывает контрмеру» — типовая связь концептуального ядра."@ru ;
+    isec:sourcedFrom "типовые связи концептуального ядра (Gacitua, Diéguez-Rebolledo, 2026)" .
+
+isec:mandatedBy a owl:ObjectProperty ;
+    rdfs:domain isec:Countermeasure ; rdfs:range isec:NormativeRequirement ;
+    rdfs:label "предписана"@ru , "mandated by"@en .
+
+isec:definedInStandard a owl:ObjectProperty ;
+    rdfs:domain isec:NormativeRequirement ; rdfs:range isec:Standard ;
+    rdfs:label "определено в стандарте"@ru , "defined in standard"@en .
+
+isec:supportsFunction a owl:ObjectProperty ;
+    rdfs:domain isec:Countermeasure ; rdfs:range isec:CSFFunction ;
+    rdfs:label "поддерживает функцию"@ru , "supports function"@en ;
+    rdfs:comment "Связывает контрмеру с функцией NIST CSF 2.0, которую она обеспечивает; используется для запросов покрытия жизненного цикла."@ru ;
+    isec:sourcedFrom "требование «полнота жизненного цикла»" .
+
+isec:dependsOn a owl:ObjectProperty , owl:TransitiveProperty ;
+    rdfs:domain isec:Asset ; rdfs:range isec:Asset ;
+    rdfs:label "зависит от"@ru , "depends on"@en ;
+    rdfs:comment "Транзитивная зависимость между ресурсами; используется для распространения риска по цепочке зависимостей — типовая связь концептуального ядра."@ru ;
+    isec:sourcedFrom "задача распространения риска по зависимостям ресурсов" .
+
+isec:partOf a owl:ObjectProperty , owl:TransitiveProperty ;
+    rdfs:domain isec:Asset ; rdfs:range isec:Asset ;
+    rdfs:label "часть"@ru , "part of"@en ;
+    rdfs:comment "Отношение часть-целое между ресурсами; по типологии тезауруса РуТез — второй тип отношений, обладающий транзитивностью при условии жёсткой связи части с целым."@ru ;
+    isec:sourcedFrom "Лукашевич и др., 2018 (отношение «часть — целое»)" .
+
+isec:arisesFromThreat a owl:ObjectProperty ;
+    rdfs:domain isec:Risk ; rdfs:range isec:Threat ;
+    rdfs:label "возникает из угрозы"@ru , "arises from threat"@en .
+
+isec:arisesFromVulnerability a owl:ObjectProperty ;
+    rdfs:domain isec:Risk ; rdfs:range isec:Vulnerability ;
+    rdfs:label "возникает из уязвимости"@ru , "arises from vulnerability"@en .
+
+isec:concernsAsset a owl:ObjectProperty ;
+    rdfs:domain isec:Risk ; rdfs:range isec:Asset ;
+    rdfs:label "относится к ресурсу"@ru , "concerns asset"@en .
+
+isec:conductedBy a owl:ObjectProperty ;
+    rdfs:domain isec:Attack ; rdfs:range isec:ThreatActor ;
+    owl:inverseOf isec:conducts ;
+    rdfs:label "проведена"@ru , "conducted by"@en .
+
+isec:conducts a owl:ObjectProperty ;
+    rdfs:domain isec:ThreatActor ; rdfs:range isec:Attack ;
+    rdfs:label "проводит"@ru , "conducts"@en .
+
+isec:instantiatesPattern a owl:ObjectProperty ;
+    rdfs:domain isec:Attack ; rdfs:range isec:AttackPattern ;
+    rdfs:label "инстанциирует шаблон"@ru , "instantiates pattern"@en .
+
+isec:classifiedAsWeakness a owl:ObjectProperty ;
+    rdfs:domain isec:Vulnerability ; rdfs:range isec:Weakness ;
+    rdfs:label "классифицирована как слабость"@ru , "classified as weakness"@en .
+
+isec:referencesKnowledgeBase a owl:ObjectProperty ;
+    rdfs:range isec:KnowledgeBase ;
+    rdfs:label "ссылается на базу знаний"@ru , "references knowledge base"@en ;
+    rdfs:comment "Домен — объединение Vulnerability, Weakness и AttackPattern (union-домен не типизирован явно средствами RDFS; ограничение накладывается на уровне данных)."@ru .
+
+isec:indicatesAttack a owl:ObjectProperty ;
+    rdfs:domain isec:Indicator ; rdfs:range isec:Attack ;
+    rdfs:label "указывает на атаку"@ru , "indicates attack"@en .
+
+isec:indicatesActor a owl:ObjectProperty ;
+    rdfs:domain isec:Indicator ; rdfs:range isec:ThreatActor ;
+    rdfs:label "указывает на злоумышленника"@ru , "indicates actor"@en .
+
+isec:modelsAsset a owl:ObjectProperty ;
+    rdfs:domain isec:DigitalTwin ; rdfs:range isec:Asset ;
+    rdfs:label "моделирует"@ru , "models"@en ;
+    rdfs:comment "Связывает цифровой двойник с ресурсом, который он представляет; двойник не тождествен ресурсу — см. isec:designDecision класса isec:DigitalTwin."@ru ;
+    isec:sourcedFrom "Массель, Ворожцова, 2020 (цифровые двойники)" .
+
+#################################################################
+#  5. ДАТАТИП-СВОЙСТВА
+#################################################################
+
+isec:hasExternalId a owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "внешний идентификатор"@ru , "external identifier"@en ;
+    rdfs:comment "Идентификатор во внешней базе знаний (например, значение вида CVE-2024-XXXXX, CWE-XXX, CAPEC-XXX, T1059 для ATT&CK). Домен — объединение Vulnerability, Weakness, AttackPattern."@ru .
+
+isec:hasCVSSScore a owl:DatatypeProperty ;
+    rdfs:domain isec:Vulnerability ; rdfs:range xsd:decimal ;
+    rdfs:label "оценка CVSS"@ru , "CVSS score"@en ;
+    isec:sourcedFrom "OntoSecAI — Ullah et al., 2025", "SEPSES — Kiesling et al., 2019" .
+
+isec:hasLikelihood a owl:DatatypeProperty ;
+    rdfs:domain isec:Risk ; rdfs:range xsd:string ;
+    rdfs:label "вероятность"@ru , "likelihood"@en ;
+    rdfs:comment "Ожидаемые значения: низкая/средняя/высокая (или числовая шкала — определяется при заполнении графа)."@ru .
+
+isec:hasImpactLevel a owl:DatatypeProperty ;
+    rdfs:domain isec:Risk ; rdfs:range xsd:string ;
+    rdfs:label "уровень ущерба"@ru , "impact level"@en .
+
+isec:hasRiskScore a owl:DatatypeProperty ;
+    rdfs:domain isec:Risk ; rdfs:range xsd:decimal ;
+    rdfs:label "интегральная оценка риска"@ru , "risk score"@en .
+
+isec:hasCriticalityLevel a owl:DatatypeProperty ;
+    rdfs:domain isec:Asset ; rdfs:range xsd:string ;
+    rdfs:label "уровень критичности"@ru , "criticality level"@en ;
+    rdfs:comment "Например: технический / процессный / организационный уровень декомпозиции — по моделям объектов энергетики (Массель, Ворожцова, 2020)."@ru ;
+    isec:sourcedFrom "Массель, Ворожцова, 2020 (многоуровневая декомпозиция объектов)" .
+
+isec:hasVersion a owl:DatatypeProperty ;
+    rdfs:domain isec:Standard ; rdfs:range xsd:string ;
+    rdfs:label "версия"@ru , "version"@en .
+
+isec:hasEffectiveDate a owl:DatatypeProperty ;
+    rdfs:domain isec:Standard ; rdfs:range xsd:date ;
+    rdfs:label "дата введения в действие"@ru , "effective date"@en .
+
+#################################################################
+#  6. ИМЕНОВАННЫЕ ИНДИВИДЫ — функции NIST CSF 2.0
+#################################################################
+
+isec:Govern a isec:CSFFunction ;
+    rdfs:label "Govern"@en , "Управление"@ru ;
+    rdfs:comment "Введена в NIST CSF версии 2.0; в корпусе из 93 онтологий затрагивается в 26 работах, преимущественно через связь со стандартами управления."@ru .
+
+isec:Identify a isec:CSFFunction ;
+    rdfs:label "Identify"@en , "Идентификация"@ru .
+
+isec:Protect a isec:CSFFunction ;
+    rdfs:label "Protect"@en , "Защита"@ru .
+
+isec:Detect a isec:CSFFunction ;
+    rdfs:label "Detect"@en , "Обнаружение"@ru .
+
+isec:Respond a isec:CSFFunction ;
+    rdfs:label "Respond"@en , "Реагирование"@ru ;
+    rdfs:comment "Слабо охвачена существующими онтологиями: 13 работ из 93 (Gacitua, Diéguez-Rebolledo, 2026)."@ru .
+
+isec:Recover a isec:CSFFunction ;
+    rdfs:label "Recover"@en , "Восстановление"@ru ;
+    rdfs:comment "Наименее охваченная функция: 2 работы из 93 (Gacitua, Diéguez-Rebolledo, 2026)."@ru .
+
+#################################################################
+#  7. ИМЕНОВАННЫЕ ИНДИВИДЫ — внешние базы знаний
+#################################################################
+
+isec:CVE a isec:KnowledgeBase ;
+    rdfs:label "CVE"@en ;
+    rdfs:seeAlso <https://cve.mitre.org/> .
+
+isec:CWE a isec:KnowledgeBase ;
+    rdfs:label "CWE"@en ;
+    rdfs:seeAlso <https://cwe.mitre.org/> .
+
+isec:CAPEC a isec:KnowledgeBase ;
+    rdfs:label "CAPEC"@en ;
+    rdfs:seeAlso <https://capec.mitre.org/> .
+
+isec:MITRE_ATTACK a isec:KnowledgeBase ;
+    rdfs:label "MITRE ATT&CK"@en ;
+    rdfs:seeAlso <https://attack.mitre.org/> ;
+    isec:sourcedFrom "MITRE ATT&CK" .
+
+isec:BDU_FSTEC a isec:KnowledgeBase ;
+    rdfs:label "БДУ ФСТЭК России"@ru ;
+    rdfs:seeAlso <https://bdu.fstec.ru/> ;
+    isec:sourcedFrom "БДУ ФСТЭК России" .
+
+#################################################################
+#  8. ИМЕНОВАННЫЕ ИНДИВИДЫ — стандарты
+#################################################################
+
+isec:NIST_CSF_2_0 a isec:Standard ;
+    rdfs:label "NIST Cybersecurity Framework 2.0"@en ;
+    isec:hasVersion "2.0" ;
+    rdfs:seeAlso <https://doi.org/10.6028/NIST.CSWP.29> ;
+    isec:sourcedFrom "NIST CSF 2.0 — NIST, 2024" .
+
+isec:ISO_IEC_27000 a isec:Standard ;
+    rdfs:label "ISO/IEC 27000"@en ;
+    isec:sourcedFrom "ISO/IEC 27000:2018" .
+
+### конец файла

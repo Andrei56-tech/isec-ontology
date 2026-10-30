@@ -1,0 +1,9 @@
+# Листинг 1. Цепочки атак и ресурсы, затронутые косвенно через зависимости.
+# Путь свойства dependsOn+ вычисляет транзитивное замыкание без логического вывода.
+PREFIX isec: <https://andrei56-tech.github.io/isec-ontology/ns#>
+SELECT ?actor ?attack ?vulnerability ?asset ?affected WHERE {
+  ?asset      isec:hasVulnerability ?vulnerability .
+  ?attack     isec:exploits         ?vulnerability .
+  OPTIONAL { ?attack   isec:conductedBy ?actor . }
+  OPTIONAL { ?affected isec:dependsOn+  ?asset . }
+}

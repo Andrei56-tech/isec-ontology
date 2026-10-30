@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:isec="https://andrei56-tech.github.io/isec-ontology/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:vann="http://purl.org/vocab/vann/"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+>
+  <owl:DatatypeProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#hasExternalId">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="ru">внешний идентификатор</rdfs:label>
+    <rdfs:label xml:lang="en">external identifier</rdfs:label>
+    <rdfs:comment xml:lang="ru">Идентификатор во внешней базе знаний (например, значение вида CVE-2024-XXXXX, CWE-XXX, CAPEC-XXX, T1059 для ATT&amp;CK). Домен — объединение Vulnerability, Weakness, AttackPattern.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <isec:KnowledgeBase rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#CAPEC">
+    <rdfs:label xml:lang="en">CAPEC</rdfs:label>
+    <rdfs:seeAlso rdf:resource="https://capec.mitre.org/"/>
+  </isec:KnowledgeBase>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#classifiedAsWeakness">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Vulnerability"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Weakness"/>
+    <rdfs:label xml:lang="ru">классифицирована как слабость</rdfs:label>
+    <rdfs:label xml:lang="en">classified as weakness</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#mandates">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#NormativeRequirement"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#mandatedBy">
+        <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"/>
+        <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#NormativeRequirement"/>
+        <rdfs:label xml:lang="ru">предписана</rdfs:label>
+        <rdfs:label xml:lang="en">mandated by</rdfs:label>
+      </owl:ObjectProperty>
+    </owl:inverseOf>
+    <rdfs:label xml:lang="ru">предписывает</rdfs:label>
+    <rdfs:label xml:lang="en">mandates</rdfs:label>
+    <rdfs:comment xml:lang="ru">«нормативное требование предписывает контрмеру» — типовая связь концептуального ядра.</rdfs:comment>
+    <isec:sourcedFrom>типовые связи концептуального ядра (Gacitua, Diéguez-Rebolledo, 2026)</isec:sourcedFrom>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#hasVulnerability">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Asset"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Vulnerability"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#vulnerabilityOfAsset">
+        <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Vulnerability"/>
+        <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Asset"/>
+        <rdfs:label xml:lang="ru">уязвимость ресурса</rdfs:label>
+        <rdfs:label xml:lang="en">vulnerability of asset</rdfs:label>
+      </owl:ObjectProperty>
+    </owl:inverseOf>
+    <rdfs:label xml:lang="ru">имеет уязвимость</rdfs:label>
+    <rdfs:label xml:lang="en">has vulnerability</rdfs:label>
+    <rdfs:comment xml:lang="ru">«уязвимость присуща ресурсу» — типовая связь концептуального ядра.</rdfs:comment>
+    <isec:sourcedFrom>типовые связи концептуального ядра (Gacitua, Diéguez-Rebolledo, 2026)</isec:sourcedFrom>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#protects">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Asset"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#protectedBy">
+        <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Asset"/>
+        <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"/>
+        <rdfs:label xml:lang="ru">защищён посредством</rdfs:label>
+        <rdfs:label xml:lang="en">protected by</rdfs:label>
+      </owl:ObjectProperty>
+    </owl:inverseOf>
+    <rdfs:label xml:lang="ru">защищает</rdfs:label>
+    <rdfs:label xml:lang="en">protects</rdfs:label>
+  </owl:ObjectProperty>
+  <isec:KnowledgeBase rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#BDU_FSTEC">
+    <rdfs:label xml:lang="ru">БДУ ФСТЭК России</rdfs:label>
+    <rdfs:seeAlso rdf:resource="https://bdu.fstec.ru/"/>
+    <isec:sourcedFrom>БДУ ФСТЭК России</isec:sourcedFrom>
+  </isec:KnowledgeBase>
+  <owl:AnnotationProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#designDecision">
+    <rdfs:label xml:lang="ru">решение о разрешении неоднозначности</rdfs:label>
+    <rdfs:label xml:lang="en">disambiguation decision</rdfs:label>
+    <rdfs:comment xml:lang="ru">Фиксирует, как была разрешена содержательная неоднозначность между источниками при построении онтологии, и почему.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#mitigates">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Threat"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#mitigatedBy">
+        <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Threat"/>
+        <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"/>
+        <rdfs:label xml:lang="ru">нейтрализуется</rdfs:label>
+        <rdfs:label xml:lang="en">mitigated by</rdfs:label>
+      </owl:ObjectProperty>
+    </owl:inverseOf>
+    <rdfs:label xml:lang="ru">нейтрализует</rdfs:label>
+    <rdfs:label xml:lang="en">mitigates</rdfs:label>
+    <rdfs:comment xml:lang="ru">«контрмера нейтрализует угрозу» — типовая связь концептуального ядра.</rdfs:comment>
+    <isec:sourcedFrom>типовые связи концептуального ядра (Gacitua, Diéguez-Rebolledo, 2026)</isec:sourcedFrom>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#hasLikelihood">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Risk"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="ru">вероятность</rdfs:label>
+    <rdfs:label xml:lang="en">likelihood</rdfs:label>
+    <rdfs:comment xml:lang="ru">Ожидаемые значения: низкая/средняя/высокая (или числовая шкала — определяется при заполнении графа).</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#hasImpactLevel">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Risk"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="ru">уровень ущерба</rdfs:label>
+    <rdfs:label xml:lang="en">impact level</rdfs:label>
+  </owl:DatatypeProperty>
+  <isec:Standard rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#ISO_IEC_27000">
+    <rdfs:label xml:lang="en">ISO/IEC 27000</rdfs:label>
+    <isec:sourcedFrom>ISO/IEC 27000:2018</isec:sourcedFrom>
+  </isec:Standard>
+  <owl:DatatypeProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#hasCriticalityLevel">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Asset"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="ru">уровень критичности</rdfs:label>
+    <rdfs:label xml:lang="en">criticality level</rdfs:label>
+    <rdfs:comment xml:lang="ru">Например: технический / процессный / организационный уровень декомпозиции — по моделям объектов энергетики (Массель, Ворожцова, 2020).</rdfs:comment>
+    <isec:sourcedFrom>Массель, Ворожцова, 2020 (многоуровневая декомпозиция объектов)</isec:sourcedFrom>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#indicatesAttack">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Indicator"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Attack"/>
+    <rdfs:label xml:lang="ru">указывает на атаку</rdfs:label>
+    <rdfs:label xml:lang="en">indicates attack</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:Ontology rdf:about="https://andrei56-tech.github.io/isec-ontology/ns">
+    <owl:versionIRI rdf:resource="https://andrei56-tech.github.io/isec-ontology/1.0.0/ns"/>
+    <owl:versionInfo>1.0.0</owl:versionInfo>
+    <dcterms:title xml:lang="ru">Консолидированная онтология информационной безопасности</dcterms:title>
+    <dcterms:title xml:lang="en">Consolidated Information Security Ontology</dcterms:title>
+    <dcterms:description xml:lang="ru">Онтология предметной области информационной безопасности, построенная обобщением онтологических разработок и нормативных рамок, рассмотренных в обзоре. Предназначена для использования в качестве схемы графа знаний о защищаемой системе в контуре GraphRAG для анализа защищенности.</dcterms:description>
+    <dcterms:description xml:lang="en">A domain ontology of information security consolidated from published security ontologies and frameworks. Intended as the schema of a knowledge graph of a protected system in a GraphRAG pipeline for security posture analysis.</dcterms:description>
+    <dcterms:creator xml:lang="ru">Ципорин П.И.</dcterms:creator>
+    <dcterms:creator xml:lang="en">Tsiporin P.I.</dcterms:creator>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-27</dcterms:created>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-30</dcterms:modified>
+    <dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+    <dcterms:bibliographicCitation xml:lang="ru">Ципорин П.И. Онтологии информационной безопасности: состояние исследований и консолидированная модель для контура GraphRAG (в печати).</dcterms:bibliographicCitation>
+    <dcterms:source rdf:resource="https://doi.org/10.3390/app16126185"/>
+    <dcterms:source rdf:resource="https://doi.org/10.1007/s10115-024-02308-y"/>
+    <dcterms:source rdf:resource="https://doi.org/10.1371/journal.pone.0337806"/>
+    <dcterms:source rdf:resource="https://doi.org/10.1007/978-3-030-30796-7_13"/>
+    <dcterms:source rdf:resource="https://doi.org/10.18287/2223-9537-2020-10-3-327-337"/>
+    <dcterms:source rdf:resource="https://doi.org/10.18287/2223-9537-2018-8-1-74-95"/>
+    <dcterms:source rdf:resource="https://doi.org/10.6028/NIST.CSWP.29"/>
+    <vann:preferredNamespacePrefix>isec</vann:preferredNamespacePrefix>
+    <vann:preferredNamespaceUri>https://andrei56-tech.github.io/isec-ontology/ns#</vann:preferredNamespaceUri>
+    <rdfs:seeAlso rdf:resource="https://github.com/Andrei56-tech/isec-ontology"/>
+  </owl:Ontology>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#arisesFromThreat">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Risk"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Threat"/>
+    <rdfs:label xml:lang="ru">возникает из угрозы</rdfs:label>
+    <rdfs:label xml:lang="en">arises from threat</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#partOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Asset"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Asset"/>
+    <rdfs:label xml:lang="ru">часть</rdfs:label>
+    <rdfs:label xml:lang="en">part of</rdfs:label>
+    <rdfs:comment xml:lang="ru">Отношение часть-целое между ресурсами; по типологии тезауруса РуТез — второй тип отношений, обладающий транзитивностью при условии жёсткой связи части с целым.</rdfs:comment>
+    <isec:sourcedFrom>Лукашевич и др., 2018 (отношение «часть — целое»)</isec:sourcedFrom>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#ResponseAction">
+    <rdfs:subClassOf rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"/>
+    <rdfs:label xml:lang="ru">Действие реагирования</rdfs:label>
+    <rdfs:label xml:lang="en">Response Action</rdfs:label>
+    <rdfs:comment xml:lang="ru">Контрмера, относящаяся к пост-инцидентной фазе (реагирование и восстановление). Выделена отдельным подклассом намеренно: обзор [раздел 3.2, 5.4] показал, что функции Respond и Recover NIST CSF 2.0 наименее обеспечены онтологической поддержкой; явное выделение подкласса делает этот участок жизненного цикла адресуемым в графе знаний.</rdfs:comment>
+    <isec:sourcedFrom>анализ покрытия функций NIST CSF 2.0 в корпусе (Gacitua, Diéguez-Rebolledo, 2026)</isec:sourcedFrom>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#supportsFunction">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#CSFFunction"/>
+    <rdfs:label xml:lang="ru">поддерживает функцию</rdfs:label>
+    <rdfs:label xml:lang="en">supports function</rdfs:label>
+    <rdfs:comment xml:lang="ru">Связывает контрмеру с функцией NIST CSF 2.0, которую она обеспечивает; используется для запросов покрытия жизненного цикла.</rdfs:comment>
+    <isec:sourcedFrom>требование «полнота жизненного цикла»</isec:sourcedFrom>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#indicatesActor">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Indicator"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#ThreatActor"/>
+    <rdfs:label xml:lang="ru">указывает на злоумышленника</rdfs:label>
+    <rdfs:label xml:lang="en">indicates actor</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:AnnotationProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#sourcedFrom">
+    <rdfs:label xml:lang="ru">источник обобщения</rdfs:label>
+    <rdfs:label xml:lang="en">generalized from</rdfs:label>
+    <rdfs:comment xml:lang="ru">Указывает источник(и), из обобщения которых введена данная конструкция (краткая библиографическая метка; полные выходные данные — в README и dcterms:source онтологии).</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#arisesFromVulnerability">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Risk"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Vulnerability"/>
+    <rdfs:label xml:lang="ru">возникает из уязвимости</rdfs:label>
+    <rdfs:label xml:lang="en">arises from vulnerability</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:AllDisjointClasses rdf:nodeID="n9d36163d7b624d4b82aabb85894c8e3fb1">
+    <owl:members rdf:parseType="Collection">
+      <rdf:Description rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Asset"/>
+      <rdf:Description rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Threat"/>
+      <rdf:Description rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Attack"/>
+      <rdf:Description rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Vulnerability"/>
+      <rdf:Description rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Weakness"/>
+      <rdf:Description rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#AttackPattern"/>
+      <rdf:Description rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"/>
+      <rdf:Description rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Risk"/>
+      <rdf:Description rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#ThreatActor"/>
+      <rdf:Description rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Indicator"/>
+      <rdf:Description rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#DigitalTwin"/>
+      <rdf:Description rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#NormativeRequirement"/>
+      <rdf:Description rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Standard"/>
+      <rdf:Description rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#KnowledgeBase"/>
+      <rdf:Description rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#CSFFunction"/>
+    </owl:members>
+  </owl:AllDisjointClasses>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#targets">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Threat"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Asset"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#threatenedBy">
+        <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Asset"/>
+        <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Threat"/>
+        <rdfs:label xml:lang="ru">под угрозой со стороны</rdfs:label>
+        <rdfs:label xml:lang="en">threatened by</rdfs:label>
+      </owl:ObjectProperty>
+    </owl:inverseOf>
+    <rdfs:label xml:lang="ru">нацелена на</rdfs:label>
+    <rdfs:label xml:lang="en">targets</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#conductedBy">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Attack"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#ThreatActor"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#conducts">
+        <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#ThreatActor"/>
+        <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Attack"/>
+        <rdfs:label xml:lang="ru">проводит</rdfs:label>
+        <rdfs:label xml:lang="en">conducts</rdfs:label>
+      </owl:ObjectProperty>
+    </owl:inverseOf>
+    <rdfs:label xml:lang="ru">проведена</rdfs:label>
+    <rdfs:label xml:lang="en">conducted by</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#hasRiskScore">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Risk"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:label xml:lang="ru">интегральная оценка риска</rdfs:label>
+    <rdfs:label xml:lang="en">risk score</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#modelsAsset">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#DigitalTwin"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Asset"/>
+    <rdfs:label xml:lang="ru">моделирует</rdfs:label>
+    <rdfs:label xml:lang="en">models</rdfs:label>
+    <rdfs:comment xml:lang="ru">Связывает цифровой двойник с ресурсом, который он представляет; двойник не тождествен ресурсу — см. isec:designDecision класса isec:DigitalTwin.</rdfs:comment>
+    <isec:sourcedFrom>Массель, Ворожцова, 2020 (цифровые двойники)</isec:sourcedFrom>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#exploits">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Attack"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Vulnerability"/>
+    <rdfs:label xml:lang="ru">эксплуатирует</rdfs:label>
+    <rdfs:label xml:lang="en">exploits</rdfs:label>
+    <rdfs:comment xml:lang="ru">«атака эксплуатирует уязвимость» — типовая связь концептуального ядра.</rdfs:comment>
+    <isec:sourcedFrom>типовые связи концептуального ядра (Gacitua, Diéguez-Rebolledo, 2026)</isec:sourcedFrom>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#definedInStandard">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#NormativeRequirement"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Standard"/>
+    <rdfs:label xml:lang="ru">определено в стандарте</rdfs:label>
+    <rdfs:label xml:lang="en">defined in standard</rdfs:label>
+  </owl:ObjectProperty>
+  <isec:CSFFunction rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Recover">
+    <rdfs:label xml:lang="en">Recover</rdfs:label>
+    <rdfs:label xml:lang="ru">Восстановление</rdfs:label>
+    <rdfs:comment xml:lang="ru">Наименее охваченная функция: 2 работы из 93 (Gacitua, Diéguez-Rebolledo, 2026).</rdfs:comment>
+  </isec:CSFFunction>
+  <isec:CSFFunction rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Govern">
+    <rdfs:label xml:lang="en">Govern</rdfs:label>
+    <rdfs:label xml:lang="ru">Управление</rdfs:label>
+    <rdfs:comment xml:lang="ru">Введена в NIST CSF версии 2.0; в корпусе из 93 онтологий затрагивается в 26 работах, преимущественно через связь со стандартами управления.</rdfs:comment>
+  </isec:CSFFunction>
+  <isec:KnowledgeBase rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#CVE">
+    <rdfs:label xml:lang="en">CVE</rdfs:label>
+    <rdfs:seeAlso rdf:resource="https://cve.mitre.org/"/>
+  </isec:KnowledgeBase>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#referencesKnowledgeBase">
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#KnowledgeBase"/>
+    <rdfs:label xml:lang="ru">ссылается на базу знаний</rdfs:label>
+    <rdfs:label xml:lang="en">references knowledge base</rdfs:label>
+    <rdfs:comment xml:lang="ru">Домен — объединение Vulnerability, Weakness и AttackPattern (union-домен не типизирован явно средствами RDFS; ограничение накладывается на уровне данных).</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#instantiatesPattern">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Attack"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#AttackPattern"/>
+    <rdfs:label xml:lang="ru">инстанциирует шаблон</rdfs:label>
+    <rdfs:label xml:lang="en">instantiates pattern</rdfs:label>
+  </owl:ObjectProperty>
+  <isec:KnowledgeBase rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#MITRE_ATTACK">
+    <rdfs:label xml:lang="en">MITRE ATT&amp;CK</rdfs:label>
+    <rdfs:seeAlso rdf:resource="https://attack.mitre.org/"/>
+    <isec:sourcedFrom>MITRE ATT&amp;CK</isec:sourcedFrom>
+  </isec:KnowledgeBase>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#realizes">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Attack"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Threat"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#realizedBy">
+        <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Threat"/>
+        <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Attack"/>
+        <rdfs:label xml:lang="ru">реализуется через</rdfs:label>
+        <rdfs:label xml:lang="en">realized by</rdfs:label>
+      </owl:ObjectProperty>
+    </owl:inverseOf>
+    <rdfs:label xml:lang="ru">реализует</rdfs:label>
+    <rdfs:label xml:lang="en">realizes</rdfs:label>
+    <isec:designDecision>Введено для явного разведения Threat и Attack — см. isec:designDecision класса isec:Attack.</isec:designDecision>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#hasVersion">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Standard"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="ru">версия</rdfs:label>
+    <rdfs:label xml:lang="en">version</rdfs:label>
+  </owl:DatatypeProperty>
+  <isec:Standard rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#NIST_CSF_2_0">
+    <rdfs:label xml:lang="en">NIST Cybersecurity Framework 2.0</rdfs:label>
+    <isec:hasVersion>2.0</isec:hasVersion>
+    <rdfs:seeAlso rdf:resource="https://doi.org/10.6028/NIST.CSWP.29"/>
+    <isec:sourcedFrom>NIST CSF 2.0 — NIST, 2024</isec:sourcedFrom>
+  </isec:Standard>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#dependsOn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Asset"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Asset"/>
+    <rdfs:label xml:lang="ru">зависит от</rdfs:label>
+    <rdfs:label xml:lang="en">depends on</rdfs:label>
+    <rdfs:comment xml:lang="ru">Транзитивная зависимость между ресурсами; используется для распространения риска по цепочке зависимостей — типовая связь концептуального ядра.</rdfs:comment>
+    <isec:sourcedFrom>задача распространения риска по зависимостям ресурсов</isec:sourcedFrom>
+  </owl:ObjectProperty>
+  <isec:CSFFunction rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Protect">
+    <rdfs:label xml:lang="en">Protect</rdfs:label>
+    <rdfs:label xml:lang="ru">Защита</rdfs:label>
+  </isec:CSFFunction>
+  <owl:Class rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#CriticalInfrastructureObject">
+    <rdfs:subClassOf rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Asset"/>
+    <rdfs:label xml:lang="ru">Объект критической информационной инфраструктуры</rdfs:label>
+    <rdfs:label xml:lang="en">Critical Information Infrastructure Object</rdfs:label>
+    <skos:altLabel xml:lang="ru">объект КИИ</skos:altLabel>
+    <rdfs:comment xml:lang="ru">Ресурс, относящийся к критической информационной инфраструктуре; для таких объектов характерна многоуровневая декомпозиция (технический, процессный, организационный уровни).</rdfs:comment>
+    <isec:sourcedFrom>Массель, Ворожцова, 2020 (онтологические модели объектов энергетики)</isec:sourcedFrom>
+  </owl:Class>
+  <isec:KnowledgeBase rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#CWE">
+    <rdfs:label xml:lang="en">CWE</rdfs:label>
+    <rdfs:seeAlso rdf:resource="https://cwe.mitre.org/"/>
+  </isec:KnowledgeBase>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#remediates">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Vulnerability"/>
+    <rdfs:label xml:lang="ru">устраняет</rdfs:label>
+    <rdfs:label xml:lang="en">remediates</rdfs:label>
+  </owl:ObjectProperty>
+  <isec:CSFFunction rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Detect">
+    <rdfs:label xml:lang="en">Detect</rdfs:label>
+    <rdfs:label xml:lang="ru">Обнаружение</rdfs:label>
+  </isec:CSFFunction>
+  <isec:CSFFunction rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Respond">
+    <rdfs:label xml:lang="en">Respond</rdfs:label>
+    <rdfs:label xml:lang="ru">Реагирование</rdfs:label>
+    <rdfs:comment xml:lang="ru">Слабо охвачена существующими онтологиями: 13 работ из 93 (Gacitua, Diéguez-Rebolledo, 2026).</rdfs:comment>
+  </isec:CSFFunction>
+  <owl:DatatypeProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#hasCVSSScore">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Vulnerability"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:label xml:lang="ru">оценка CVSS</rdfs:label>
+    <rdfs:label xml:lang="en">CVSS score</rdfs:label>
+    <isec:sourcedFrom>OntoSecAI — Ullah et al., 2025</isec:sourcedFrom>
+    <isec:sourcedFrom>SEPSES — Kiesling et al., 2019</isec:sourcedFrom>
+  </owl:DatatypeProperty>
+  <isec:CSFFunction rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Identify">
+    <rdfs:label xml:lang="en">Identify</rdfs:label>
+    <rdfs:label xml:lang="ru">Идентификация</rdfs:label>
+  </isec:CSFFunction>
+  <owl:ObjectProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#concernsAsset">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Risk"/>
+    <rdfs:range rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Asset"/>
+    <rdfs:label xml:lang="ru">относится к ресурсу</rdfs:label>
+    <rdfs:label xml:lang="en">concerns asset</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#hasEffectiveDate">
+    <rdfs:domain rdf:resource="https://andrei56-tech.github.io/isec-ontology/ns#Standard"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:label xml:lang="ru">дата введения в действие</rdfs:label>
+    <rdfs:label xml:lang="en">effective date</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:Class rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Weakness">
+    <rdfs:label xml:lang="ru">Слабость</rdfs:label>
+    <rdfs:label xml:lang="en">Weakness</rdfs:label>
+    <rdfs:comment xml:lang="ru">Общая категория недостатка (аналог CWE), которой может быть классифицирована конкретная уязвимость. В отличие от Vulnerability — не привязана к конкретному ресурсу или экземпляру.</rdfs:comment>
+    <isec:sourcedFrom>SEPSES — Kiesling et al., 2019 (связывание CVE, CWE, CAPEC, CVSS)</isec:sourcedFrom>
+  </owl:Class>
+  <owl:Class rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Asset">
+    <rdfs:label xml:lang="ru">Ресурс</rdfs:label>
+    <rdfs:label xml:lang="en">Asset</rdfs:label>
+    <skos:altLabel xml:lang="ru">актив</skos:altLabel>
+    <rdfs:comment xml:lang="ru">Защищаемый ресурс: информационный, программный, аппаратный или организационный объект, обладающий ценностью и потенциально уязвимый к угрозам.</rdfs:comment>
+    <isec:sourcedFrom>MDISOnt — Meriah et al., 2025</isec:sourcedFrom>
+    <isec:sourcedFrom>OntoSecAI — Ullah et al., 2025</isec:sourcedFrom>
+    <isec:sourcedFrom>UCO — Syed et al., 2016</isec:sourcedFrom>
+    <isec:sourcedFrom>SEPSES — Kiesling et al., 2019</isec:sourcedFrom>
+    <isec:sourcedFrom>Массель, Ворожцова, 2020 (онтологические модели объектов энергетики)</isec:sourcedFrom>
+    <isec:sourcedFrom>концептуальное ядро корпуса из 93 онтологий (Gacitua, Diéguez-Rebolledo, 2026)</isec:sourcedFrom>
+  </owl:Class>
+  <owl:Class rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Countermeasure">
+    <rdfs:label xml:lang="ru">Контрмера</rdfs:label>
+    <rdfs:label xml:lang="en">Countermeasure</rdfs:label>
+    <skos:altLabel xml:lang="ru">мера защиты</skos:altLabel>
+    <rdfs:comment xml:lang="ru">Мера, техническая или организационная, направленная на нейтрализацию угрозы, устранение уязвимости или защиту ресурса.</rdfs:comment>
+    <isec:sourcedFrom>MDISOnt — Meriah et al., 2025</isec:sourcedFrom>
+    <isec:sourcedFrom>OntoSecAI — Ullah et al., 2025</isec:sourcedFrom>
+    <isec:sourcedFrom>UCO — Syed et al., 2016</isec:sourcedFrom>
+    <isec:sourcedFrom>SEPSES — Kiesling et al., 2019</isec:sourcedFrom>
+    <isec:sourcedFrom>Массель, Ворожцова, 2020 (онтологические модели объектов энергетики)</isec:sourcedFrom>
+  </owl:Class>
+  <owl:Class rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#ThreatActor">
+    <rdfs:label xml:lang="ru">Злоумышленник</rdfs:label>
+    <rdfs:label xml:lang="en">Threat Actor</rdfs:label>
+    <rdfs:comment xml:lang="ru">Действующее лицо или организация, выступающее источником атаки.</rdfs:comment>
+    <isec:sourcedFrom>Массель, Ворожцова, 2020 (онтологические модели объектов энергетики)</isec:sourcedFrom>
+    <isec:sourcedFrom>UCO — Syed et al., 2016 (интеграция со STIX)</isec:sourcedFrom>
+  </owl:Class>
+  <owl:Class rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#DigitalTwin">
+    <rdfs:label xml:lang="ru">Цифровой двойник</rdfs:label>
+    <rdfs:label xml:lang="en">Digital Twin</rdfs:label>
+    <rdfs:comment xml:lang="ru">Модель ресурса (как правило, объекта КИИ), на которой можно проводить анализ защищённости без воздействия на реальный производственный объект.</rdfs:comment>
+    <isec:sourcedFrom>Массель, Ворожцова, 2020 (цифровые двойники объектов энергетики)</isec:sourcedFrom>
+    <isec:designDecision xml:lang="ru">DigitalTwin введен как самостоятельный класс, связанный с Asset свойством modelsAsset, а не как подкласс Asset. Двойник не является защищаемым ресурсом, он служит его моделью; если сделать его подклассом Asset, в графе нельзя будет отличить результаты, полученные на модели, от результатов, подтвержденных на реальной системе. Источники, вводящие цифровой двойник, это отношение явно не формализуют.</isec:designDecision>
+  </owl:Class>
+  <owl:Class rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Standard">
+    <rdfs:label xml:lang="ru">Стандарт / нормативный документ</rdfs:label>
+    <rdfs:label xml:lang="en">Standard</rdfs:label>
+    <rdfs:comment xml:lang="ru">Внешний нормативный источник, определяющий требования (например, NIST CSF, ISO/IEC 27000, требования по защите КИИ).</rdfs:comment>
+    <isec:sourcedFrom>NIST CSF 2.0 — NIST, 2024</isec:sourcedFrom>
+    <isec:sourcedFrom>ISO/IEC 27000:2018</isec:sourcedFrom>
+    <isec:sourcedFrom>БДУ ФСТЭК России</isec:sourcedFrom>
+  </owl:Class>
+  <owl:Class rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Attack">
+    <rdfs:label xml:lang="ru">Атака</rdfs:label>
+    <rdfs:label xml:lang="en">Attack</rdfs:label>
+    <rdfs:comment xml:lang="ru">Конкретное действие или событие, реализующее угрозу через эксплуатацию одной или нескольких уязвимостей ресурса.</rdfs:comment>
+    <isec:sourcedFrom>MDISOnt — Meriah et al., 2025</isec:sourcedFrom>
+    <isec:sourcedFrom>UCO — Syed et al., 2016</isec:sourcedFrom>
+    <isec:sourcedFrom>SEPSES — Kiesling et al., 2019</isec:sourcedFrom>
+    <isec:designDecision xml:lang="ru">Threat и Attack разделены на два класса, связанных свойством isec:realizes (Attack realizes Threat), а не объединены в один класс и не связаны отношением subClassOf. Источники расходятся: MDISOnt/UCO трактуют их как разные сущности, OntoSecAI по сути сливает угрозу и атаку в единую оценку риска. Разделение с явной связью 'реализует' сохраняет различимость абстрактной возможности (Threat) и конкретного события (Attack).</isec:designDecision>
+  </owl:Class>
+  <owl:Class rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Threat">
+    <rdfs:label xml:lang="ru">Угроза</rdfs:label>
+    <rdfs:label xml:lang="en">Threat</rdfs:label>
+    <skos:altLabel xml:lang="ru">опасность</skos:altLabel>
+    <rdfs:comment xml:lang="ru">Потенциальный источник нежелательного воздействия на ресурс. В отличие от Attack — абстрактная возможность, а не конкретное реализованное событие.</rdfs:comment>
+    <isec:sourcedFrom>MDISOnt — Meriah et al., 2025</isec:sourcedFrom>
+    <isec:sourcedFrom>OntoSecAI — Ullah et al., 2025</isec:sourcedFrom>
+    <isec:sourcedFrom>UCO — Syed et al., 2016</isec:sourcedFrom>
+    <isec:sourcedFrom>SEPSES — Kiesling et al., 2019</isec:sourcedFrom>
+    <isec:sourcedFrom>Лукашевич и др., 2018 (иерархия «опасность, угроза»)</isec:sourcedFrom>
+  </owl:Class>
+  <owl:Class rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#NormativeRequirement">
+    <rdfs:label xml:lang="ru">Нормативное требование</rdfs:label>
+    <rdfs:label xml:lang="en">Normative Requirement</rdfs:label>
+    <rdfs:comment xml:lang="ru">Требование, зафиксированное в стандарте или нормативном документе, предписывающее применение конкретной контрмеры.</rdfs:comment>
+    <isec:sourcedFrom>MDISOnt — Meriah et al., 2025 (обогащение по ISO/IEC 27000)</isec:sourcedFrom>
+    <isec:sourcedFrom>NIST CSF 2.0 — NIST, 2024</isec:sourcedFrom>
+  </owl:Class>
+  <owl:Class rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#KnowledgeBase">
+    <rdfs:label xml:lang="ru">Внешняя база знаний</rdfs:label>
+    <rdfs:label xml:lang="en">External Knowledge Base</rdfs:label>
+    <rdfs:comment xml:lang="ru">Внешний каталог или база знаний, с которой связываются уязвимости, слабости и шаблоны атак онтологии (например, CVE, CWE, CAPEC, MITRE ATT&amp;CK, БДУ ФСТЭК).</rdfs:comment>
+    <isec:sourcedFrom>UCO — Syed et al., 2016</isec:sourcedFrom>
+    <isec:sourcedFrom>SEPSES — Kiesling et al., 2019</isec:sourcedFrom>
+    <isec:sourcedFrom>требование совместимости с внешними базами знаний</isec:sourcedFrom>
+  </owl:Class>
+  <owl:Class rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#CSFFunction">
+    <rdfs:label xml:lang="ru">Функция NIST CSF 2.0</rdfs:label>
+    <rdfs:label xml:lang="en">CSF Function</rdfs:label>
+    <rdfs:comment xml:lang="ru">Одна из шести функций рамочного документа NIST Cybersecurity Framework 2.0 (Govern, Identify, Protect, Detect, Respond, Recover), которую поддерживает контрмера.</rdfs:comment>
+    <isec:sourcedFrom>NIST CSF 2.0 — NIST, 2024; требование «полнота жизненного цикла»</isec:sourcedFrom>
+  </owl:Class>
+  <owl:Class rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Indicator">
+    <rdfs:label xml:lang="ru">Индикатор компрометации</rdfs:label>
+    <rdfs:label xml:lang="en">Indicator of Compromise</rdfs:label>
+    <rdfs:comment xml:lang="ru">Наблюдаемый артефакт (сетевой, файловый и т.п.), свидетельствующий о конкретной атаке или активности злоумышленника.</rdfs:comment>
+    <isec:sourcedFrom>UCO — Syed et al., 2016 (интеграция со STIX)</isec:sourcedFrom>
+  </owl:Class>
+  <owl:Class rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Vulnerability">
+    <rdfs:label xml:lang="ru">Уязвимость</rdfs:label>
+    <rdfs:label xml:lang="en">Vulnerability</rdfs:label>
+    <rdfs:comment xml:lang="ru">Слабое место ресурса, которое может быть проэксплуатировано атакой. Конкретный экземпляр уязвимости (аналог записи CVE).</rdfs:comment>
+    <isec:sourcedFrom>MDISOnt — Meriah et al., 2025</isec:sourcedFrom>
+    <isec:sourcedFrom>OntoSecAI — Ullah et al., 2025</isec:sourcedFrom>
+    <isec:sourcedFrom>UCO — Syed et al., 2016</isec:sourcedFrom>
+    <isec:sourcedFrom>SEPSES — Kiesling et al., 2019</isec:sourcedFrom>
+  </owl:Class>
+  <owl:Class rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#AttackPattern">
+    <rdfs:label xml:lang="ru">Шаблон атаки</rdfs:label>
+    <rdfs:label xml:lang="en">Attack Pattern</rdfs:label>
+    <skos:altLabel xml:lang="ru">техника атаки</skos:altLabel>
+    <rdfs:comment xml:lang="ru">Обобщённое, многократно используемое описание способа атаки (аналог записи CAPEC или техники MITRE ATT&amp;CK), которое может быть инстанциировано в виде конкретной атаки.</rdfs:comment>
+    <isec:sourcedFrom>SEPSES — Kiesling et al., 2019</isec:sourcedFrom>
+    <isec:sourcedFrom>MITRE ATT&amp;CK</isec:sourcedFrom>
+  </owl:Class>
+  <owl:Class rdf:about="https://andrei56-tech.github.io/isec-ontology/ns#Risk">
+    <rdfs:label xml:lang="ru">Риск</rdfs:label>
+    <rdfs:label xml:lang="en">Risk</rdfs:label>
+    <rdfs:comment xml:lang="ru">Оценка потенциального ущерба, возникающего из сочетания угрозы, уязвимости и их воздействия на конкретный ресурс.</rdfs:comment>
+    <isec:sourcedFrom>OntoSecAI — Ullah et al., 2025 (оценка риска на основе CVSS)</isec:sourcedFrom>
+    <isec:designDecision xml:lang="ru">Риск выделен в самостоятельный класс, а не задан атрибутом угрозы или уязвимости: одна и та же уязвимость создает разный риск для разных ресурсов. Три связи (arisesFromThreat, arisesFromVulnerability, concernsAsset) представляют эту трехместную зависимость и позволяют выполнить запрос «риски для ресурса X». В источниках явная оценка риска есть только в OntoSecAI.</isec:designDecision>
+  </owl:Class>
+</rdf:RDF>
