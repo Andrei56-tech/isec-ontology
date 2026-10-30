@@ -1,5 +1,7 @@
 # ISEC — консолидированная онтология информационной безопасности
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23808714.svg)](https://doi.org/10.5281/zenodo.23808714)
+
 **Consolidated Information Security Ontology** · версия 1.0.0 · лицензия [CC BY 4.0](LICENSE)
 
 Онтология предметной области информационной безопасности, построенная обобщением опубликованных онтологий (MDISOnt, OntoSecAI, UCO, SEPSES), онтологических моделей цифровых двойников, тезаурусных ресурсов и NIST Cybersecurity Framework 2.0. Предназначена для использования в качестве схемы графа знаний о защищаемой системе в контуре GraphRAG для анализа защищенности.
@@ -53,7 +55,7 @@ RDF-хранилища (Apache Jena Fuseki, GraphDB, Virtuoso и др.) загр
 
 ## Цитирование
 
-Ципорин П.И. ISEC: консолидированная онтология информационной безопасности. Версия 1.0.0. 2026. URL: https://github.com/Andrei56-tech/isec-ontology.
+Ципорин П.И. ISEC: консолидированная онтология информационной безопасности. Версия 1.0.0. 2026. URL: https://github.com/Andrei56-tech/isec-ontology. DOI: 10.5281/zenodo.23808714.
 
 Метаданные для цитирования — в файле [CITATION.cff](CITATION.cff).
 
