@@ -34,6 +34,7 @@
 | `ontology/isec_ontology.ttl` | онтология (RDF 1.1 Turtle, OWL 2) — основной файл |
 | `ontology/isec_ontology.owl`, `.jsonld` | та же онтология в RDF/XML и JSON-LD |
 | `examples/example_system.ttl` | иллюстративный набор данных: АСУ ТП подстанции с цифровым двойником |
+| `examples/example_corporate_ics.ttl` | иллюстративный набор данных: корпоративный сегмент и сегмент АСУ ТП, две цепочки атаки, непокрытые функции Respond и Recover |
 | `queries/*.rq` | запросы SPARQL: цепочки атак, непокрытые функции CSF, риски ресурса |
 | `scripts/validate.py` | проверка синтаксиса, меток, непротиворечивости и выполнение запросов |
 | `docs/` | документация для GitHub Pages; по IRI терминов открывается их описание |
