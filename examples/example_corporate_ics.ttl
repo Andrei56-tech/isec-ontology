@@ -1,0 +1,152 @@
+@prefix isec: <https://andrei56-tech.github.io/isec-ontology/ns#> .
+@prefix ex:   <https://andrei56-tech.github.io/isec-ontology/examples/corporate-ics#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+#################################################################
+#  Демонстрационный набор данных (иллюстративный)
+#  Условная защищаемая система: корпоративный сегмент и сегмент
+#  АСУ ТП одной организации.
+#  Состав, связи и оценки вымышлены и служат только для проверки
+#  схемы и запросов. Реальны лишь идентификаторы внешних баз
+#  знаний: CVE-2021-44228, CVE-2017-0144, CWE-917, CWE-119,
+#  техники ATT&CK T1190 и T1210.
+#  Набор покрывает две цепочки атаки и четыре функции NIST CSF 2.0
+#  (Govern, Identify, Protect, Detect); Respond и Recover намеренно
+#  оставлены непокрытыми, чтобы воспроизводить запрос о пробелах.
+#################################################################
+
+# --- ресурсы и их зависимости
+ex:srv-crm a isec:Asset ;
+    rdfs:label "Сервер корпоративного приложения"@ru ;
+    isec:hasCriticalityLevel "высокий" ;
+    isec:dependsOn ex:db-crm .
+
+ex:db-crm a isec:Asset ;
+    rdfs:label "СУБД корпоративного приложения"@ru ;
+    isec:hasCriticalityLevel "высокий" .
+
+ex:ws-oper a isec:Asset ;
+    rdfs:label "АРМ оператора"@ru ;
+    isec:dependsOn ex:srv-crm .
+
+ex:scada-01 a isec:CriticalInfrastructureObject ;
+    rdfs:label "АРМ диспетчера АСУ ТП"@ru ;
+    isec:hasCriticalityLevel "критический" ;
+    isec:dependsOn ex:plc-01 .
+
+ex:plc-01 a isec:CriticalInfrastructureObject ;
+    rdfs:label "Программируемый логический контроллер"@ru ;
+    isec:partOf ex:scada-01 .
+
+# --- цифровой двойник
+ex:dt-scada a isec:DigitalTwin ;
+    rdfs:label "Цифровой двойник сегмента АСУ ТП"@ru ;
+    isec:modelsAsset ex:scada-01 .
+
+# --- уязвимости, слабости, шаблоны атак
+ex:CVE-2021-44228 a isec:Vulnerability ;
+    rdfs:label "CVE-2021-44228"@en ;
+    isec:hasExternalId "CVE-2021-44228" ;
+    isec:hasCVSSScore "10.0"^^xsd:decimal ;
+    isec:classifiedAsWeakness ex:CWE-917 ;
+    isec:referencesKnowledgeBase isec:CVE .
+
+ex:CVE-2017-0144 a isec:Vulnerability ;
+    rdfs:label "CVE-2017-0144"@en ;
+    isec:hasExternalId "CVE-2017-0144" ;
+    isec:hasCVSSScore "8.1"^^xsd:decimal ;
+    isec:classifiedAsWeakness ex:CWE-119 ;
+    isec:referencesKnowledgeBase isec:CVE .
+
+ex:CWE-917 a isec:Weakness ;
+    isec:hasExternalId "CWE-917" ;
+    isec:referencesKnowledgeBase isec:CWE .
+
+ex:CWE-119 a isec:Weakness ;
+    isec:hasExternalId "CWE-119" ;
+    isec:referencesKnowledgeBase isec:CWE .
+
+ex:T1190 a isec:AttackPattern ;
+    rdfs:label "Exploit Public-Facing Application"@en ;
+    isec:hasExternalId "T1190" ;
+    isec:referencesKnowledgeBase isec:MITRE_ATTACK .
+
+ex:T1210 a isec:AttackPattern ;
+    rdfs:label "Exploitation of Remote Services"@en ;
+    isec:hasExternalId "T1210" ;
+    isec:referencesKnowledgeBase isec:MITRE_ATTACK .
+
+# --- связь уязвимостей с ресурсами
+ex:srv-crm isec:hasVulnerability ex:CVE-2021-44228 .
+ex:ws-oper isec:hasVulnerability ex:CVE-2017-0144 .
+
+# --- угрозы и злоумышленник
+ex:threat-rce a isec:Threat ;
+    rdfs:label "Удаленное исполнение кода"@ru ;
+    isec:targets ex:srv-crm .
+
+ex:threat-lateral a isec:Threat ;
+    rdfs:label "Горизонтальное перемещение в сети"@ru ;
+    isec:targets ex:ws-oper .
+
+ex:actor-ext a isec:ThreatActor ;
+    rdfs:label "Внешний злоумышленник"@ru .
+
+# --- атаки
+ex:attack-01 a isec:Attack ;
+    rdfs:label "Эксплуатация уязвимости веб-сервиса"@ru ;
+    isec:realizes ex:threat-rce ;
+    isec:exploits ex:CVE-2021-44228 ;
+    isec:instantiatesPattern ex:T1190 ;
+    isec:conductedBy ex:actor-ext .
+
+ex:attack-02 a isec:Attack ;
+    rdfs:label "Эксплуатация службы SMB"@ru ;
+    isec:realizes ex:threat-lateral ;
+    isec:exploits ex:CVE-2017-0144 ;
+    isec:instantiatesPattern ex:T1210 .
+
+# --- индикатор компрометации
+ex:ioc-01 a isec:Indicator ;
+    rdfs:label "Исходящее соединение с узлом LDAP"@ru .
+
+# --- риск
+ex:risk-01 a isec:Risk ;
+    isec:arisesFromThreat ex:threat-rce ;
+    isec:arisesFromVulnerability ex:CVE-2021-44228 ;
+    isec:concernsAsset ex:srv-crm ;
+    isec:hasRiskScore "9.0"^^xsd:decimal .
+
+# --- контрмеры и их привязка к функциям CSF 2.0
+ex:cm-waf a isec:Countermeasure ;
+    rdfs:label "Межсетевой экран уровня приложений"@ru ;
+    isec:protects ex:srv-crm ;
+    isec:mitigates ex:threat-rce ;
+    isec:supportsFunction isec:Protect .
+
+ex:cm-siem a isec:Countermeasure ;
+    rdfs:label "Мониторинг событий безопасности"@ru ;
+    isec:protects ex:srv-crm ;
+    isec:supportsFunction isec:Detect .
+
+ex:cm-inventory a isec:Countermeasure ;
+    rdfs:label "Инвентаризация ресурсов"@ru ;
+    isec:protects ex:scada-01 ;
+    isec:supportsFunction isec:Identify .
+
+ex:cm-policy a isec:Countermeasure ;
+    rdfs:label "Политика управления доступом"@ru ;
+    isec:protects ex:scada-01 ;
+    isec:supportsFunction isec:Govern .
+
+ex:cm-patch a isec:Countermeasure ;
+    rdfs:label "Управление обновлениями"@ru ;
+    isec:remediates ex:CVE-2017-0144 ;
+    isec:protects ex:ws-oper ;
+    isec:supportsFunction isec:Protect .
+
+# --- нормативное требование
+ex:req-kii-21 a isec:NormativeRequirement ;
+    rdfs:label "Требование по защите значимых объектов КИИ"@ru ;
+    isec:mandates ex:cm-inventory .
