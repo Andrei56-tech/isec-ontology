@@ -1,21 +1,21 @@
 {
-  "title": "ISEC: Consolidated Information Security Ontology",
-  "upload_type": "dataset",
-  "description": "Domain ontology of information security (RDF 1.1 Turtle, OWL 2 RL) consolidated from published security ontologies and frameworks; intended as the schema of a knowledge graph in a GraphRAG pipeline for security posture analysis. Includes RDF/XML and JSON-LD serializations, example data, SPARQL queries and a validation script.",
-  "creators": [
-    {
-      "name": "Tsiporin, P. I."
-    }
-  ],
-  "license": "cc-by-4.0",
-  "keywords": [
-    "ontology",
-    "information security",
-    "cybersecurity",
-    "knowledge graph",
-    "GraphRAG",
-    "OWL"
-  ],
-  "language": "rus",
-  "version": "1.0.0"
+    "title": "ISEC: Consolidated Information Security Ontology",
+    "upload_type": "dataset",
+    "description": "Domain ontology of information security (RDF 1.1 Turtle, OWL 2 RL) consolidated from published security ontologies and frameworks; intended as the schema of a knowledge graph in a GraphRAG pipeline for security posture analysis. Includes RDF/XML and JSON-LD serializations, example data, SPARQL queries and a validation script.",
+    "creators": [
+          {
+                  "name": "Tsiporin, P. I."
+          }
+    ],
+    "license": "cc-by-4.0",
+    "keywords": [
+          "ontology",
+          "information security",
+          "cybersecurity",
+          "knowledge graph",
+          "GraphRAG",
+          "OWL"
+    ],
+    "language": "rus",
+    "version": "1.0.1"
 }
